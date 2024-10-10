@@ -65,3 +65,4 @@ Abre el archivo index.html en tu navegador para usar la aplicación localmente.
 # Licencia
     Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles. Contacto
     Para cualquier pregunta o comentario, por favor contacta a f.martinez5@utp.edu.co.
+[![wakatime](https://wakatime.com/badge/user/018e3e70-a193-4cb2-9e69-1ab76073c1ea/project/b9b93716-4353-4432-b8b0-e1c166fe82ec.svg)](https://wakatime.com/badge/user/018e3e70-a193-4cb2-9e69-1ab76073c1ea/project/b9b93716-4353-4432-b8b0-e1c166fe82ec)
