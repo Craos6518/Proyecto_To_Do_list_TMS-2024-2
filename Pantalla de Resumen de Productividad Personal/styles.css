@@ -1,0 +1,56 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .chart-section {
+    margin: 40px 0;
+  }
+  
+  .chart-section h2 {
+    margin-bottom: 20px;
+    color: #666;
+  }
+  
+  canvas {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .task-list {
+    margin: 40px 0;
+  }
+  
+  .task-list h2 {
+    color: #666;
+  }
+  
+  .task-list ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .task-list li {
+    background-color: #ffe6e6;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    color: #333;
+  }
+  

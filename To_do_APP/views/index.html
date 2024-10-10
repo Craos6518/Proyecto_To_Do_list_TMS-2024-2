@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de Tareas</title>
+    <link rel="stylesheet" href="../css/main.css">
+
+</head>
+<body>
+    <!-- Barra de navegación vertical -->
+    <div id="sidebar-container"></div>
+
+    <!-- Contenido principal -->
+    <div class="main-content">
+        <!-- Botones de cambio de vista -->
+        <div class="view-buttons">
+            <button onclick="showView('all-tasks')" aria-label="Ver todas las tareas">Todas las tareas</button>
+            <button onclick="showView('weekly-tasks')" aria-label="Ver la vista semanal">Vista Semanal</button>
+            <button onclick="showView('monthly-tasks')" aria-label="Ver la vista mensual">Vista Mensual</button>
+        </div>
+
+        <!-- Vistas de tareas -->
+        <section id="task-views">
+            <!-- Vista Todas las tareas -->
+            <section id="all-tasks" class="view active">
+                <h2>Todas las tareas</h2>
+                <div id="task-list"></div>
+            </section>
+
+            <!-- Vista Semanal -->
+            <section id="weekly-tasks" class="view">
+                <h2>Vista Semanal</h2>
+                <div id="weekly-calendar"></div>
+            </section>
+
+            <!-- Vista Mensual -->
+            <section id="monthly-tasks" class="view">
+                <h2>Vista Mensual</h2>
+                <div id="monthly-calendar"></div>
+            </section>
+        </section>
+    </div> <!-- /main-content -->
+
+    <!-- Botón flotante -->
+    <button class="floating-btn" onclick="openTaskForm()" aria-label="Crear nueva tarea">+</button>
+    <div id="task-container">
+        <!-- Tasks will be dynamically rendered here -->
+    </div>
+
+    <!--form crear-->
+    <div id="task-form"></div>
+    <!-- Scripts -->
+    <script src="../js/main.js" defer></script>
+    <script src="../js/views.js" defer></script>
+    
+</body>
+</html>

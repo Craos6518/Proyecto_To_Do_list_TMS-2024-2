@@ -1,0 +1,39 @@
+Hola, Este es el adelanto que tengo del proyecto, ya esta la barra de navegación, esta la vista de productividad, esta el login (TODO CREADO VISUALMENTE). Se debe de comenzar a trabajar con el main (Parte central de la pagina)
+
+Dimensiones Generales de la Página:
+
+    Ancho Total:
+        Ancho de la barra de navegación: 250px
+        Ancho del contenido principal: Dependiendo de cuántos píxeles asignes al contenido, esto podría ser variable. Por ejemplo, si el contenido principal ocupa el resto del ancho de la ventana del navegador, el cálculo sería:
+            Si el ancho total de la ventana del navegador es de 1200px, el ancho del contenido principal sería:
+            Ancho del contenido=1200px−250px=950px
+            Ancho del contenido=1200px−250px=950px
+        Ancho total de la página = ancho de la barra de navegación + ancho del contenido principal.
+
+    Altura Total:
+        La barra de navegación tiene una altura de 100vh, lo que significa que ocupa el 100% de la altura de la ventana del navegador.
+        La altura del contenido principal también será 100vh para que se alinee con la barra de navegación.
+
++-----------------------------+-----------------------------------------+
+| Menú                        |                                         |   
+| +-------------------------+ |                                         |
+| | Todas las tareas        | |                                         |
+| | Tareas por categoría    | |                                         |
+| | Tareas por prioridad    | |                                         |
+| | Tareas por estado       | |                                         |
+| | Configuración           | |                                         |
+| +-------------------------+ |                                         |
+|                             |           contenido                     |
+|                             |                                         |
+|                             |            PRINCIPAL                    |
+|                             |                                         |
+|                             |                                         |
+|                             |                                         |
+|                             |                                         |
+|                             |                                         |
+|                             |                                         |
+|                             |                                         |
+|                             |                                         |
+|                             |                                         |
++-----------------------------+-----------------------------------------+
+

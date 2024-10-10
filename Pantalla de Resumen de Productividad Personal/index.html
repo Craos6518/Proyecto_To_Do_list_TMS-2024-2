@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resumen de Productividad</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Resumen de Productividad</h1>
+
+    <!-- Gráfico de Barras para Tareas Completadas -->
+    <section class="chart-section">
+      <h2>Tareas Completadas por Día</h2>
+      <canvas id="barChart"></canvas>
+    </section>
+
+    <!-- Gráfico de Líneas para Promedio de Tiempo en Completar Tareas -->
+    <section class="chart-section">
+      <h2>Promedio de Tiempo en Completar Tareas (días)</h2>
+      <canvas id="lineChart"></canvas>
+    </section>
+
+    <!-- Listado de Tareas Aplazadas Más de Una Vez -->
+    <section class="task-list">
+      <h2>Tareas Aplazadas Más de Una Vez</h2>
+      <ul id="delayedTasks">
+        <!-- Las tareas aplazadas se añadirán aquí mediante JS -->
+      </ul>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

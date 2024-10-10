@@ -1,0 +1,22 @@
+Tipo: [Tipo del cambio] Descripción breve
+
+Detalles:
+- Breve descripción de lo que se hizo en este commit.
+- Explicación del problema que se solucionó o la funcionalidad añadida.
+- Puntos importantes a tener en cuenta o cambios críticos.
+
+Referencias:
+- Número de ticket o issue relacionado (si aplica).
+- Documentos o enlaces relevantes.
+
+Ejemplo:
+
+Tipo: fix Corrige error en la validación del formulario de registro
+
+Detalles:
+- Se corrigió un error que causaba que el formulario de registro fallara al validar los campos obligatorios.
+- Se añadió una nueva función para manejar los mensajes de error del lado del servidor.
+- Se actualizó la prueba unitaria para reflejar el nuevo flujo de validación.
+
+Referencias:
+- Issue #42
