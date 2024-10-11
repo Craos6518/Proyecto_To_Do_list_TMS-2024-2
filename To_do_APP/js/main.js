@@ -74,6 +74,14 @@ fetch("Navbar.html")
   
   function showTasksByPriority() {
     // Fetch and display tasks by priority
-    document.getElementById('task-container').innerHTML = 'Tasks by Priority (example task data here)';
+    document.getElementById('task-container').innerHTML = 'Tasks by Priority (example task data here';
   }
-  
+
+  function cargarform(elemnto, archivo){
+    fetch(archivo)
+      .then(response=>response.text())
+      .then(data=>{
+        document.getElementById(elemnto).innerHTML=data;
+      })
+  }
+cargarform('main-content','./views/Botones/Crear.html');
