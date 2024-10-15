@@ -1,0 +1,94 @@
+Hola bro, este archivo principalmente es para tener como comandos básicos de Git. Por si no has configurado ya git con git. Ahí te dejo la configuración inicial. También cómo vincular repositorios locales, confirmar los commits. Actualiza los repositorios. Hay varias cosas. Espero que nos vaya bien este semestre.
+
+1. **Configuración inicial**:
+   ```bash
+   git config --global user.name "Tu Nombre"
+   git config --global user.email "tuemail@example.com"
+   ```
+
+2. **Crear un nuevo repositorio**:
+   ```bash
+   git init
+   ```
+
+3. **Agregar archivos al staging area**:
+   ```bash
+   git add .
+   ```
+
+4. **Confirmar (commit) cambios**:
+   ```bash
+   git commit -m "Mensaje del commit"
+   ```
+
+5. **Vincular repositorio local con GitHub**:
+   ```bash
+   git remote add origin https://github.com/usuario/repositorio.git
+   ```
+
+6. **Enviar (push) cambios a GitHub**:
+   ```bash
+   git push -u origin main
+   ```
+
+7. **Clonar un repositorio de GitHub**:
+   ```bash
+   git clone https://github.com/usuario/repositorio.git
+   ```
+
+8. **Ver el estado de los cambios**:
+   ```bash
+   git status
+   ```
+
+9. **Ver historial de commits**:
+   ```bash
+   git log
+   ```
+
+10. **Actualizar tu repositorio local con cambios de GitHub**:
+    ```bash
+    git pull origin main
+    ```
+
+11. **Crear una nueva rama**:
+    ```bash
+    git branch nombre_rama
+    ```
+
+12. **Cambiar a una rama existente**:
+    ```bash
+    git checkout nombre_rama
+    ```
+
+13. **Crear una nueva rama y cambiar a ella al mismo tiempo**:
+    ```bash
+    git checkout -b nombre_rama
+    ```
+
+14. **Ver todas las ramas (locales y remotas)**:
+    ```bash
+    git branch -a
+    ```
+
+15. **Fusionar (merge) una rama con la rama actual**:
+    ```bash
+    git merge nombre_rama
+    ```
+
+16. **Eliminar una rama local**:
+    ```bash
+    git branch -d nombre_rama
+    ```
+
+17. **Subir una nueva rama a GitHub**:
+    ```bash
+    git push -u origin nombre_rama
+    ```
+
+18. **Eliminar una rama remota**:
+    ```bash
+    git push origin --delete nombre_rama
+    ```
+
+Con estos comandos, podrás gestionar ramas y trabajar de manera más eficiente en equipos o en proyectos individuales.
