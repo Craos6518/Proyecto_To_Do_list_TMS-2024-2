@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 Hola bro, este archivo principalmente es para tener como comandos básicos de Git. Por si no has configurado ya git con git. Ahí te dejo la configuración inicial. También cómo vincular repositorios locales, confirmar los commits. Actualiza los repositorios. Hay varias cosas. Espero que nos vaya bien este semestre.
+=======
+Aquí tienes una lista rápida de los comandos básicos para iniciar con Git y GitHub:
+>>>>>>> 187f6479117c56032516bfdbb8330f966a980ce8
 
 1. **Configuración inicial**:
    ```bash

@@ -1,0 +1,131 @@
+/* Estilos generales */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #F7F9FB;
+    color: #2C3E50;
+    display: flex;
+    box-sizing: border-box;
+}
+
+/* Barra de navegación vertical */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: #34495E;
+    position: fixed;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar nav ul li {
+    margin: 20px 0;
+}
+
+.sidebar nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+    display: block;
+}
+
+.sidebar nav ul li a:hover {
+    background-color: #1ABC9C;
+}
+
+/* Contenido principal */
+.main-content {
+    margin-left: 250px;
+    padding: 20px;
+    width: calc(100% - 250px);
+    display: flex;
+    flex-direction: column;
+}
+
+.view {
+    display: none;
+}
+
+.view.active {
+    display: block;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Botón flotante */
+.floating-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: #1ABC9C;
+    color: white;
+    font-size: 24px;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.floating-btn:hover {
+    background-color: #16a085;
+}
+
+/* Calendario semanal */
+#weekly-calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+}
+
+.week-day {
+    background-color: #ecf0f1;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+/* Calendario mensual */
+#monthly-calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+}
+
+.month-day {
+    background-color: #ecf0f1;
+    padding: 15px;
+    text-align: center;
+    border-radius: 8px;
+    position: relative;
+}
+
+/* Botones de cambio de vista */
+.view-buttons {
+    margin-bottom: 20px;
+}
+
+.view-buttons button {
+    background-color: #1ABC9C;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.view-buttons button:hover {
+    background-color: #16a085;
+}

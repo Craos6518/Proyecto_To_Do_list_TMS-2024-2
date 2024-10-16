@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/task-form.css">
+    
+</head>
+<body>
+    <div class="task-form">
+        <h1>Crear Nueva Tarea</h1>
+        <form id="task-form">
+            <div class="form-group">
+                <label for="task-title">Título:</label>
+                <input type="text" id="task-title" required>
+            </div>
+            <div class="form-group">
+                <label for="task-description">Descripción (opcional):</label>
+                <textarea id="task-description"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="due-date">Fecha de Vencimiento:</label>
+                <input type="date" id="due-date" required>
+            </div>
+            <div class="form-group">
+                <label for="priority">Prioridad:</label>
+                <select id="priority" required>
+                    <option value="">Seleccione una prioridad</option>
+                    <option value="critico">Crítico</option>
+                    <option value="urgente">Urgente</option>
+                    <option value="normal">Normal</option>
+                    <option value="baja">Baja</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="category">Categoría:</label>
+                <input type="text" id="category" required>
+            </div>
+            <button type="submit">Crear Tarea</button>
+        </form>
+
+    </div>
+        
+</body>
+</html>
+    
+ 
+
