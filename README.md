@@ -87,4 +87,4 @@ El objetivo de la aplicación es proporcionar una herramienta fácil de usar y a
 
 Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles. Contacto
 
-Para cualquier pregunta o comentario, por favor contacta a f.martinez5@utp.edu.co.
+Para cualquier pregunta o comentario, por favor contacta a f.martinez5@utp.edu.co o 
