@@ -59,7 +59,7 @@ fetch("Navbar.html")
   
   function showAllTasks() {
     // Fetch and display all tasks from the backend
-    document.getElementById('task-container').innerHTML = 'All Tasks (example task data here)';
+    document.getElementById('task-container').innerHTML = './all-tasks.html';
   }
   
   function showTasksByCategory() {
