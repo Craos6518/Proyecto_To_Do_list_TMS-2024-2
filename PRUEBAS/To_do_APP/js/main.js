@@ -49,6 +49,61 @@ function openTaskForm() {
           console.error('Error al cargar el formulario de tarea:', error);
       });
 }
+function addFormListener() {
+  const taskForm = document.getElementById('task-form');
+
+  if (taskForm) { // Verificar si el formulario está presente
+      taskForm.addEventListener('submit', (event) => {
+          event.preventDefault(); // Evita que el formulario se envíe y recargue la página
+
+          // Validación de campos obligatorios
+          const title = document.getElementById('task-title').value;
+          const dueDate = document.getElementById('due-date').value;
+          const priority = document.getElementById('priority').value;
+          const category = document.getElementById('category').value;
+
+          if (!title || !dueDate || !priority || !category) {
+              alert('Por favor, completa todos los campos obligatorios.');
+              return;
+          }
+
+          // Capturar los datos del formulario
+          const task = {
+              title,
+              description: document.getElementById('task-description').value || 'Sin descripción',
+              dueDate,
+              priority,
+              category,
+          };
+
+          // Obtener las tareas existentes en localStorage o crear una lista vacía si no hay ninguna
+          let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+          // Agregar la nueva tarea a la lista de tareas
+          tasks.push(task);
+
+          // Guardar la lista de tareas actualizada en localStorage con manejo de errores
+          try {
+              localStorage.setItem('tasks', JSON.stringify(tasks));
+          } catch (error) {
+              console.error('Error guardando en localStorage', error);
+          }
+
+          // Limpiar el formulario
+          taskForm.reset();
+
+          alert('Tarea guardada con éxito!');
+      });
+  }
+}
+
+// Llamar a la función cuando la página se carga
+document.addEventListener('DOMContentLoaded', () => {
+  // Cargar el formulario por defecto o la página principal
+  loadPage('./Alltask/AllTask.html');
+});
+
+
 
 // Cargar la barra de navegación
 fetch("Navbar.html")
