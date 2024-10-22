@@ -12,8 +12,8 @@ fetch('view/Navbar/navbar.html')
                 loadPage(page);
 
                 // Cambiar el estilo del botón activo
-                document.querySelectorAll('.nav-button').forEach(btn => btn.classList.remove('active'));
-                event.target.classList.add('active');
+               /* document.querySelectorAll('.nav-button').forEach(btn => btn.classList.remove('active'));
+                event.target.classList.add('active');*/
             });
         });
     })
@@ -38,7 +38,7 @@ function openTaskForm() {
     fetch('view/Form/task-form.html')
         .then(response => response.text())
         .then(data => {
-            document.getElementById('task-form').innerHTML = data;
+            document.getElementById('main-content').innerHTML = data;
             addFormListener();  // Llamar a la función que maneja el formulario
         })
         .catch(error => {
