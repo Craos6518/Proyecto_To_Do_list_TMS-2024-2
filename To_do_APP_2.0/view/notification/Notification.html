@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recordatorio de Tarea Pendiente</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Botón que abre el modal (simula una notificación) -->
+<button id="openModalBtn">Ver Notificación de Tarea</button>
+<!-- Modal -->
+<div id="taskModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>¡Recordatorio de tarea pendiente!</h2>
+        <p><strong>Tarea:</strong> <span id="taskTitle">[Título de la tarea]</span></p>
+        <p><strong>Fecha de vencimiento:</strong> <span id="dueDate">[Fecha de vencimiento]</span></p>
+        <p><strong>Descripción:</strong> <span id="taskDescription">[Descripción de la tarea]</span></p>
+        <p><strong>Prioridad:</strong> <span id="taskPriority" class="priority">[Prioridad]</span></p>
+        <p><strong>Estado:</strong> <span id="taskStatus">[Estado]</span></p>
+    </div>
+</div>
+<script src="./js/notification.js"></script>
+
+</body>
+</html>
