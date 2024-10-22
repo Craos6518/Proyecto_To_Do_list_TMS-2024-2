@@ -40,7 +40,14 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function openTaskForm() {
-  window.location.href = "task-form.html";
+  fetch('task-form.html')
+      .then(response => response.text())
+      .then(data => {
+          document.getElementById('task-form').innerHTML = data;
+      })
+      .catch(error => {
+          console.error('Error al cargar el formulario de tarea:', error);
+      });
 }
 
 // Cargar la barra de navegación
