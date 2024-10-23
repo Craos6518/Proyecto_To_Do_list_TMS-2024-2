@@ -1,8 +1,8 @@
 //view/Form/task-form.html
-document.addEventListener('DOMContentLoaded', () => {
+/*document.addEventListener('DOMContentLoaded', () => {
     const taskForm = document.getElementById('task-form');
 
-    taskForm.addEventListener('submit', (event) => {
+    taskForm.addEventListener('submitCategory', (event) => {
         event.preventDefault(); // Evita que el formulario se envíe y recargue la página
 
         // Capturar los datos del formulario
@@ -28,4 +28,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
         alert('Tarea guardada con éxito!');
     });
-});
+});*/
