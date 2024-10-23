@@ -65,6 +65,11 @@ function addFormListener() {
                 return;
             }
 
+            // Capturar la fecha actual del sistema en formato YYYY-MM-DD
+            const today = new Date();
+            const currentDate = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+
+
             // Capturar los datos del formulario
             const task = {
                 title,
@@ -72,6 +77,7 @@ function addFormListener() {
                 dueDate,
                 priority,
                 category,
+                startDate: currentDate // Agregar la fecha actual
             };
 
             // Obtener las tareas existentes en localStorage o crear una lista vacía si no hay ninguna
