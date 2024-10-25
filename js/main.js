@@ -17,6 +17,7 @@ fetch('view/Navbar/navbar.html')
     .catch(error => {
         console.error('Error al cargar la barra de navegación:', error);
     });
+
 // Función para cargar contenido dinámico
 function loadPage(page) {
     fetch(`view/${page}`)
@@ -28,7 +29,9 @@ function loadPage(page) {
             console.error('Error al cargar la página:', error);
         });
 }
+
 //Parte central: Todo lo relacionado con formularios
+
 // Constante para el límite de categorías
 const MAX_CATEGORIES = 10;
 
@@ -47,28 +50,6 @@ function getCategories() {
     return JSON.parse(localStorage.getItem('categories')) || [];
 }
 
-// Función para guardar las categorías en LocalStorage
-function saveCategories(categories) {
-    localStorage.setItem('categories', JSON.stringify(categories));
-}
-
-// Función para generar un ID alfanumérico de 4 caracteres (para categorías)
-function generateCategoryId() {
-    const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
-    let id = '';
-    for (let i = 0; i < 4; i++) {
-        id += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-    return id;
-}
-
-// Función para guardar una nueva categoría en LocalStorage
-function saveCategory(category) {
-    const categories = getCategories();
-    categories.push(category);
-    saveCategories(categories);
-}
-
 // Función para agregar una nueva tarea
 function addTask(task) {
     const tasks = getTasks();
@@ -82,7 +63,7 @@ function addCategory(categoryName) {
     
     if (categories.length < MAX_CATEGORIES) {
         const newCategory = {
-            id: generateCategoryId(),
+            id: generateRandomId(),
             name: categoryName
         };
         saveCategory(newCategory);
@@ -113,7 +94,7 @@ function openCategory(){
     .then(response => response.text())
     .then(data =>{
         document.getElementById('main-content').innerHTML = data;
-    })
+    });
 }
 
 // Función para llenar el select de categorías
@@ -193,7 +174,7 @@ function addFormListener() {
 function addCategoryListener() {
     const categoryForm = document.getElementById('category-form');
 
-    categoryForm.addEventListener('submitCategory', (event) => {
+    categoryForm.addEventListener('submit', (event) => {
         event.preventDefault();
 
         // Capturar el nombre de la categoría
@@ -214,7 +195,7 @@ function addCategoryListener() {
 
         // Crear un nuevo objeto de categoría con un ID único
         const newCategory = {
-            id: generateCategoryId(),
+            id: generateRandomId(),
             name: categoryName
         };
 
@@ -229,11 +210,6 @@ function addCategoryListener() {
     });
 }
 
-// Llamar a la función cuando la página se carga
-document.addEventListener('DOMContentLoaded', () => {
-    addCategoryListener();
-});
-
 // Parte inferior: Todo lo relacionado con el almacenamiento localStorage
 
 // Función para guardar tareas en LocalStorage
@@ -242,7 +218,9 @@ function saveTasks(tasks) {
 }
 
 // Función para guardar categorías en LocalStorage
-function saveCategories(categories) {
+function saveCategory(category) {
+    const categories = getCategories();
+    categories.push(category);
     localStorage.setItem('categories', JSON.stringify(categories));
 }
 
@@ -252,14 +230,8 @@ function getTasks() {
     return tasks ? JSON.parse(tasks) : [];
 }
 
-// Función para recuperar categorías desde LocalStorage
-function getCategories() {
-    const categories = localStorage.getItem('categories');
-    return categories ? JSON.parse(categories) : [];
-}
-
 // Llamar a la función cuando la página se carga
 document.addEventListener('DOMContentLoaded', () => {
-    // Cargar el formulario por defecto o la página principal
-    loadPage('./Alltask/AllTask.html');
+    loadPage('./Alltask/AllTask.html'); // Cargar la página principal por defecto
+    addCategoryListener();
 });
