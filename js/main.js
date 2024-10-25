@@ -37,7 +37,7 @@ const MAX_CATEGORIES = 10;
 
 // Función para generar un ID alfanumérico aleatorio de 4 dígitos
 function generateRandomId(length = 4) {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    const characters = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789';
     let id = '';
     for (let i = 0; i < length; i++) {
         id += characters.charAt(Math.floor(Math.random() * characters.length));
@@ -89,11 +89,16 @@ function openTaskForm() {
 }
 
 // Función para abrir el formulario de categorías
+// Función para abrir el formulario de categorías
 function openCategory(){
     fetch('view/Form/create-category.html')
     .then(response => response.text())
     .then(data =>{
         document.getElementById('main-content').innerHTML = data;
+        addCategoryListener(); // Añadir el listener del formulario de categorías
+    })
+    .catch(error => {
+        console.error('Error al cargar el formulario de categorías:', error);
     });
 }
 
@@ -234,4 +239,16 @@ function getTasks() {
 document.addEventListener('DOMContentLoaded', () => {
     loadPage('./Alltask/AllTask.html'); // Cargar la página principal por defecto
     addCategoryListener();
+    // Manejo del botón flotante
+    document.querySelector('.floating-btn').addEventListener('click', function() {
+        const currentPage = document.getElementById('main-content').innerHTML;
+
+        if (currentPage.includes('Todas las tareas')) {
+            openTaskForm(); // Cargar el formulario de tareas
+        } else if (currentPage.includes('Tareas por categoría')) {
+            openCategory(); // Cargar el formulario de categorías
+        } else {
+            alert('Formulario no disponible para esta vista.');
+        }
+    });
 });
