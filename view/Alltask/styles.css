@@ -1,0 +1,48 @@
+/* Estilos para el contenedor principal */
+.container {
+    max-width: 600px;
+    width: 100%;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+/* Título de la lista de tareas */
+.container h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Estilos para cada tarea */
+.tarea {
+    background-color: #e3f2fd;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+    transition: transform 0.2s ease;
+}
+
+.tarea:hover {
+    transform: translateY(-4px);
+}
+
+/* Estilos para el título de cada tarea */
+.tarea h3 {
+    color: #1976d2;
+    margin-bottom: 10px;
+}
+
+/* Estilos para los detalles de cada tarea */
+.tarea p {
+    margin: 5px 0;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.tarea p strong {
+    color: #333;
+}
