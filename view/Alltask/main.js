@@ -69,6 +69,7 @@ const tareasSimuladas = Array.from({ length: 20 }, (_, index) => ({
 // Guardar tareas simuladas en localStorage
 localStorage.setItem('tasks', JSON.stringify(tareasSimuladas));
 
+
 // Mostrar tareas al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
     mostrarTareas(); // Mostrar tareas después de que la página se haya cargado
