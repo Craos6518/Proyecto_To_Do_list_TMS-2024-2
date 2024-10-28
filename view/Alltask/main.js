@@ -39,6 +39,7 @@ function mostrarTareas(maxRows = 3) {
         maxRows += 2; // Incrementa las filas mostradas
         mostrarTareas(maxRows); // Volver a cargar tareas con el nuevo límite
     };
+    
 }
 
 // Función para obtener las tareas desde localStorage
