@@ -1,0 +1,21 @@
+/Proyecto_To_Do_list_TMS-2024-2
+|- /css
+	|- styles.css
+|- /scripts
+	|- nav.js
+	|- taskManager.js
+    |- categoryManager.js
+    |- formManager.js
+    |- localStorage.js
+    |- utils.js 
+    |- main.js
+|- /view
+    |- /AllTask
+    |- /Category
+    |- /Config
+    |- /Form
+    |- /Navbar
+    |- /Notification
+    |- /Priority
+    |- /Status
+|- index.html
