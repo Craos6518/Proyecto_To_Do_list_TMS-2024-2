@@ -1,0 +1,7 @@
+/* Estilos para el contenido principal */
+.main-content {
+    margin-left: 250px; /* Deja espacio para la barra lateral */
+    padding: 20px; /* Añadir padding para un mejor espaciado interno */
+    background-color: #f5f5f5; /* Fondo claro para contrastar con las tareas */
+    min-height: calc(100vh - 250px); /* Asegura que el contenedor ocupe toda la altura de la ventana */
+}
