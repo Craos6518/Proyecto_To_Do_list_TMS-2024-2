@@ -4,6 +4,7 @@
     height: 100vh;
     background-color: #34495E; /* Dark blue background for the sidebar */
     position: fixed; /* Fixed position to stay on the side */
+    overflow-y: auto; /* Permitir desplazamiento vertical */
 }
 
 .sidebar-container nav {
@@ -23,8 +24,26 @@
     width: 100%; /* Full width */
     font-size: 16px; /* Font size for buttons */
     cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition */
 }
 
 .sidebar-container nav .nav-button:hover {
     background-color: #1ABC9C; /* Light green background on hover */
+}
+
+.sidebar-container nav .nav-button:focus {
+    outline: 2px dashed #1ABC9C; /* Focus outline for accessibility */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .sidebar-container {
+        width: 200px; /* Ancho más pequeño en dispositivos móviles */
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar-container nav .nav-button {
+        font-size: 14px; /* Ajustar tamaño de fuente en móviles */
+    }
 }

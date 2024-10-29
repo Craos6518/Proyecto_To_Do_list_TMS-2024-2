@@ -1,0 +1,13 @@
+/* taskStyles.css */
+.task {
+    background-color: var(--background-color); /* Fondo gris claro */
+    border: 1px solid #e0e0e0; /* Borde claro */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px; /* Padding dentro de tareas */
+    margin-bottom: 10px; /* Margen debajo de tareas */
+}
+
+.task h3 {
+    font-size: 18px; /* Tamaño de fuente para títulos de tareas */
+    color: #2980B9; /* Color azul para títulos de tareas */
+}

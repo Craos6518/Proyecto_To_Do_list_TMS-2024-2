@@ -31,6 +31,20 @@ input[type="checkbox"] {
     transform: scale(1.5); /* Aumenta el tamaño del checkbox */
 }
 
+/* Estilos para inputs generales */
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="password"],
+input[type="time"] {
+    width: 100%; /* Ancho completo para todos los inputs */
+    padding: 0.75em; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    border: 1px solid #ccc; /* Borde ligero */
+    box-sizing: border-box; /* Incluir padding en el ancho total */
+}
+
+/* Estilo del botón */
 button[type="submit"] {
     width: 100%; /* Ancho completo del botón */
     padding: 0.75em; /* Espaciado interno */
@@ -50,4 +64,26 @@ button[type="submit"]:hover {
 
 button[type="submit"]:active {
     background-color: #2e63a2; /* Color al hacer clic */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    #configuracion {
+        max-width: 90%; /* Ajustar el ancho máximo a 90% en pantallas más pequeñas */
+        padding: 1.5em; /* Reducir padding */
+    }
+
+    #configuracion h1 {
+        font-size: 1.5em; /* Reducir tamaño del título en pantallas pequeñas */
+    }
+
+    label {
+        margin-bottom: 0.25em; /* Reducir margen inferior en pantallas pequeñas */
+    }
+}
+
+@media (max-width: 480px) {
+    button[type="submit"] {
+        padding: 0.5em; /* Reducir padding del botón en móviles */
+    }
 }

@@ -14,10 +14,21 @@
     line-height: 60px; /* Align text vertically */
     cursor: pointer; /* Pointer cursor on hover */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Transition effects */
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Transition effects */
 }
 
 .floating-btn:hover {
     background-color: #16A085; /* Darker green on hover */
     transform: scale(1.1); /* Scale effect on hover */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3); /* Sombra más intensa en hover */
+}
+
+/* Responsive styles */
+@media (max-width: 480px) {
+    .floating-btn {
+        width: 70px; /* Ancho más grande en móviles */
+        height: 70px; /* Altura más grande en móviles */
+        font-size: 28px; /* Aumentar el tamaño de la fuente en móviles */
+        line-height: 70px; /* Ajustar el alineamiento vertical */
+    }
 }
