@@ -1,0 +1,75 @@
+/* Styles for forms */
+.task-form {
+    max-width: 500px; /* Maximum width of the form */
+    margin: 0 auto; /* Center the form */
+    background-color: #FFFFFF; /* White background */
+    padding: 2em; /* Padding inside the form */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+}
+
+.task-form h1 {
+    font-size: 1.8em; /* Font size for form heading */
+    color: #2C3E50; /* Dark color for heading */
+    text-align: center; /* Center the heading */
+    margin-bottom: 1em; /* Bottom margin */
+}
+
+.form-group {
+    margin-bottom: 1.5em; /* Margin below form groups */
+}
+
+label {
+    display: block; /* Block display for labels */
+    font-weight: bold; /* Bold text for labels */
+    color: #555; /* Dark grey color for labels */
+    margin-bottom: 0.5em; /* Bottom margin */
+}
+
+input[type="text"],
+input[type="date"],
+textarea,
+select {
+    width: 100%; /* Full width */
+    padding: 0.75em; /* Padding inside inputs */
+    border-radius: 5px; /* Rounded corners */
+    border: 1px solid #ccc; /* Light border */
+    font-size: 1em; /* Font size */
+    color: #333; /* Dark text color */
+    background-color: #f9f9f9; /* Light grey background */
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+textarea:focus,
+select:focus {
+    outline: none; /* Remove outline */
+    border-color: #4a90e2; /* Blue border on focus */
+    box-shadow: 0 0 5px rgba(74, 144, 226, 0.3); /* Shadow effect */
+}
+
+textarea {
+    resize: vertical; /* Allow vertical resizing */
+    min-height: 80px; /* Minimum height */
+}
+
+button[type="submit"] {
+    width: 100%; /* Full width */
+    padding: 0.75em; /* Padding inside button */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 1em; /* Font size */
+    font-weight: bold; /* Bold text */
+    color: #fff; /* White text */
+    background-color: #4a90e2; /* Blue background */
+    cursor: pointer; /* Pointer cursor */
+    transition: background-color 0.3s ease; /* Transition for background color */
+}
+
+button[type="submit"]:hover {
+    background-color: #357ab8; /* Darker blue on hover */
+}
+
+button[type="submit"]:active {
+    background-color: #2e63a2; /* Even darker blue when active */
+}

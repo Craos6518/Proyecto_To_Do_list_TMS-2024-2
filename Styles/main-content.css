@@ -1,0 +1,21 @@
+/* Main content styles */
+.main-content {
+    margin-left: 250px; /* Space reserved for sidebar */
+    padding: 20px; /* Padding for content */
+    height: 100vh; /* Full viewport height */
+    overflow-y: auto; /* Scrollable if content overflows */
+    background-color: #ECF0F1; /* Light background color */
+    box-sizing: border-box; /* Include padding in width/height */
+}
+
+.main-content h1 {
+    color: #2C3E50; /* Dark text color for headings */
+    font-size: 28px; /* Font size for headings */
+    margin-bottom: 20px; /* Bottom margin */
+}
+
+.main-content p {
+    color: #7F8C8D; /* Grey color for paragraphs */
+    font-size: 16px; /* Font size for paragraphs */
+    line-height: 1.6; /* Line height for readability */
+}

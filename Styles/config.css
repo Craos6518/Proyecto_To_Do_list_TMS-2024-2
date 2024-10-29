@@ -1,0 +1,53 @@
+/* Estilos para el formulario de configuración */
+#configuracion {
+    max-width: 500px; /* Ancho máximo del formulario */
+    margin: 0 auto; /* Centrando el formulario horizontalmente */
+    background-color: #FFFFFF; /* Color de fondo blanco */
+    padding: 2em; /* Espaciado interno */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
+}
+
+#configuracion h1 {
+    font-size: 1.8em; /* Tamaño del título */
+    color: #2C3E50; /* Color del texto */
+    text-align: center; /* Centrado del texto */
+    margin-bottom: 1em; /* Margen inferior */
+}
+
+label {
+    display: block; /* Mostrar cada etiqueta como bloque */
+    font-weight: bold; /* Texto en negrita */
+    color: #555; /* Color de texto de las etiquetas */
+    margin-bottom: 0.5em; /* Margen inferior */
+}
+
+input[type="time"],
+input[type="checkbox"] {
+    margin-bottom: 1.5em; /* Margen inferior */
+}
+
+input[type="checkbox"] {
+    transform: scale(1.5); /* Aumenta el tamaño del checkbox */
+}
+
+button[type="submit"] {
+    width: 100%; /* Ancho completo del botón */
+    padding: 0.75em; /* Espaciado interno */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 1em; /* Tamaño de fuente */
+    font-weight: bold; /* Texto en negrita */
+    color: #fff; /* Color del texto */
+    background-color: #4a90e2; /* Color de fondo del botón */
+    cursor: pointer; /* Cursor como puntero */
+    transition: background-color 0.3s ease; /* Transición de color */
+}
+
+button[type="submit"]:hover {
+    background-color: #357ab8; /* Color al pasar el mouse */
+}
+
+button[type="submit"]:active {
+    background-color: #2e63a2; /* Color al hacer clic */
+}
