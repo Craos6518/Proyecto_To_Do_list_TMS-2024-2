@@ -1,5 +1,23 @@
-<div class="main-content">
-  <h1>Vista modo categoria</h1>
-  <h2>Se vera las 10 categoria creadas por el usuario</h2>
-  <button class="floating-btn" onclick="openCategory()" aria-label="Crear nueva tarea">+</button>
-</div>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Tareas</title>
+    <link rel="stylesheet" href="./styles.css" /><!-- Asegúrate de enlazar tu archivo CSS -->
+</head>
+<body>
+   
+    <div class="main-content">
+        <h1>Lista de Categorías</h1>
+        <div id="tareas-container"></div> <!-- Contenedor para las categorías y tareas -->
+        
+        <button id="load-more-button" style="display: none;">Cargar más</button> <!-- Botón para cargar más categorías -->
+    </div>
+
+    <button class="floating-btn" onclick="openCategory()" aria-label="Crear nueva tarea">+</button>
+    
+    <script src="script.js"></script> <!-- Enlaza tu archivo JavaScript -->
+</body>
+</html>
