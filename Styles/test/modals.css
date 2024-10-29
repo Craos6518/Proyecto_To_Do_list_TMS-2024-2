@@ -1,0 +1,26 @@
+/* modals.css */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Posición fija */
+    z-index: 1; /* Encima de otros elementos */
+    left: 0; /* Alinear a la izquierda */
+    top: 0; /* Alinear arriba */
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Altura completa */
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+}
+
+.modal-content {
+    background-color: white; /* Fondo blanco para el contenido del modal */
+    margin: 10% auto; /* Centrar el contenido del modal */
+    padding: 20px; /* Padding dentro del modal */
+    border: 1px solid #888; /* Borde alrededor del modal */
+    width: 50%; /* Ancho del modal */
+}
+
+.close {
+    color: red; /* Color rojo para el botón de cerrar */
+    float: right; /* Alinear a la derecha */
+    font-size: 28px; /* Tamaño de fuente */
+    font-weight: bold; /* Texto en negrita */
+}

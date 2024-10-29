@@ -55,7 +55,7 @@ textarea {
 
 button[type="submit"] {
     width: 100%; /* Full width */
-    padding: 0.75em; /* Padding inside button */
+    padding: 1em; /* Aumentar padding en botones */
     border: none; /* No border */
     border-radius: 5px; /* Rounded corners */
     font-size: 1em; /* Font size */
@@ -72,4 +72,33 @@ button[type="submit"]:hover {
 
 button[type="submit"]:active {
     background-color: #2e63a2; /* Even darker blue when active */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .task-form {
+        padding: 1.5em; /* Reducir el padding en tablets */
+    }
+}
+
+@media (max-width: 480px) {
+    .task-form {
+        padding: 1em; /* Reducir el padding en móviles */
+        max-width: 90%; /* Ancho máximo más pequeño en móviles */
+    }
+
+    .task-form h1 {
+        font-size: 1.5em; /* Tamaño de fuente más pequeño para encabezados en móviles */
+    }
+
+    label {
+        font-size: 0.9em; /* Tamaño de fuente más pequeño para etiquetas en móviles */
+    }
+
+    input[type="text"],
+    input[type="date"],
+    textarea,
+    select {
+        font-size: 0.9em; /* Tamaño de fuente más pequeño para inputs en móviles */
+    }
 }

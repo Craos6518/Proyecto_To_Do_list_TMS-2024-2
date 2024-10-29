@@ -1,0 +1,30 @@
+/* mediaQueries.css */
+/* Estilos para portátiles (14 a 15 pulgadas) */
+@media (max-width: 1366px) and (min-width: 1024px) {
+    .task-form {
+        max-width: 400px; /* Reducir el ancho máximo del formulario */
+    }
+}
+
+/* Estilos para tablets (10 a 12 pulgadas) */
+@media (max-width: 1024px) and (min-width: 768px) {
+    .task-form {
+        max-width: 90%; /* Ajustar el ancho máximo del formulario */
+    }
+
+    button {
+        padding: 0.5em; /* Reducir padding del botón */
+    }
+}
+
+/* Estilos para celulares (1080x2460) */
+@media (max-width: 480px) {
+    .floating-btn {
+        bottom: 10px; /* Ajustar posición del botón flotante */
+        right: 10px; /* Ajustar posición del botón flotante */
+    }
+
+    button {
+        padding: 0.5em; /* Menor padding en el botón */
+    }
+}

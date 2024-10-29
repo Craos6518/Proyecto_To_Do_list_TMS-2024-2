@@ -16,6 +16,8 @@
     padding: 20px; /* Padding inside modal */
     border: 1px solid #888; /* Border around modal */
     width: 50%; /* Width of modal */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    transition: all 0.3s ease; /* Transition for opening/closing */
 }
 
 .close {
@@ -51,4 +53,22 @@
 
 .priority.baja {
     color: green; /* Green for low priority */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 90%; /* Adjust width to 90% on smaller screens */
+        padding: 15px; /* Reduce padding on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        padding: 10px; /* Less padding on mobile */
+    }
+
+    .close {
+        font-size: 24px; /* Reduce close button size on mobile */
+    }
 }

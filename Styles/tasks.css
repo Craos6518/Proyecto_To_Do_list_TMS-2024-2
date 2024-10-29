@@ -28,6 +28,12 @@
     padding: 10px; /* Padding inside tasks */
     margin-bottom: 10px; /* Margin below tasks */
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Transition effects */
+}
+
+.task:hover {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada en hover */
+    transform: translateY(-2px); /* Levantar un poco la tarea en hover */
 }
 
 .task h3 {
@@ -46,4 +52,30 @@
     color: #7F8C8D; /* Grey color for message */
     font-size: 16px; /* Font size for message */
     text-align: center; /* Center text */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .tasks-container {
+        flex-direction: column; /* Cambiar a columna en pantallas más pequeñas */
+    }
+
+    .priority-section {
+        margin: 10px 0; /* Margen vertical en lugar de horizontal */
+    }
+}
+
+@media (max-width: 480px) {
+    .task {
+        padding: 15px; /* Aumentar el padding en móviles */
+        margin-bottom: 15px; /* Aumentar el margen en móviles */
+    }
+
+    .priority-section h2 {
+        font-size: 22px; /* Reducir tamaño de fuente de los encabezados */
+    }
+
+    .task h3 {
+        font-size: 16px; /* Reducir tamaño de fuente de los títulos de tareas */
+    }
 }
