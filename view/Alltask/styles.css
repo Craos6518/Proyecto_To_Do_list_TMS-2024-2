@@ -1,3 +1,4 @@
+/*view/Alltask/styles.css*/
 .main-content {
     margin-left: 250px; /* Deja espacio para la barra lateral */
     padding: 20px; /* Añadir padding para un mejor espaciado interno */
@@ -50,4 +51,51 @@
     font-size: 18px;
     color: #1ABC9C; /* Color del texto del spinner */
     margin: 20px auto; /* Centrando el spinner */
+}
+/* /AllTask/styles.css */
+
+.task-container {
+    display: flex;
+    flex-wrap: wrap; /* Permitir que las tareas se envuelvan en múltiples filas */
+    gap: 20px; /* Espacio entre las tarjetas de tareas */
+    margin-top: 20px; /* Espacio arriba del contenedor */
+}
+
+.task-card {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    flex: 1 1 calc(30% - 20px); /* Controlar el tamaño de las tarjetas (3 columnas) */
+    min-width: 250px; /* Tamaño mínimo para las tarjetas */
+    position: relative; /* Para posicionar los botones dentro de la tarjeta */
+}
+
+.task-card h3 {
+    margin: 0 0 10px; /* Espacio entre el título y el contenido */
+    font-size: 1.5em;
+}
+
+.task-card p {
+    margin: 0 0 10px; /* Espacio entre el texto de la tarea */
+}
+
+.task-card .button-container {
+    display: flex;
+    justify-content: space-between; /* Distribuir botones en extremos */
+    margin-top: 10px; /* Espacio arriba de los botones */
+}
+
+.task-card button {
+    background-color: #1ABC9C;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.task-card button:hover {
+    background-color: #16A085;
 }

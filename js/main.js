@@ -1,3 +1,4 @@
+//js/main.js
 // Parte superior: Todo lo relacionado a la barra de navegación
 
 // Función para cargar la barra de navegación
