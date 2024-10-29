@@ -26,15 +26,32 @@ export function openCategory() {
             document.getElementById('main-content').innerHTML = data;
             addCategoryListener();
         })
-        .catch(error => console.error('Error al cargar el formulario de categorías:', error));
+        .catch(error => {
+            console.error('Error al cargar el formulario de categorías:', error);
+        });
 }
 
 export function addCategoryListener() {
     const categoryForm = document.getElementById('category-form');
     categoryForm.addEventListener('submit', (event) => {
         event.preventDefault();
+
         const categoryName = document.getElementById('category-name').value.trim();
-        addCategory(categoryName);
+        let categories = saveCategories();
+
+        if (categories.length >= MAX_CATEGORIES) {
+            alert('No puedes agregar más de 10 categorías.');
+            return;
+        }
+
+        if (categories.some(category => category.name === categoryName)) {
+            alert('Esta categoría ya existe.');
+            return;
+        }
+
+        const newCategory = { id: generateRandomId(), name: categoryName };
+        saveCategory(newCategory);
+        alert(`Categoría "${categoryName}" creada con éxito.`);
         categoryForm.reset();
     });
 }

@@ -10,10 +10,12 @@ export function openTaskForm() {
             populateCategories();
             addFormListener();
         })
-        .catch(error => console.error('Error al cargar el formulario de tarea:', error));
+        .catch(error => {
+            console.error('Error al cargar el formulario de tarea:', error);
+        });
 }
 
-function addFormListener() {
+export function addFormListener() {
     const taskForm = document.getElementById('task-form');
     if (taskForm) {
         taskForm.addEventListener('submit', (event) => {
@@ -22,8 +24,18 @@ function addFormListener() {
             const dueDate = document.getElementById('due-date').value;
             const priority = document.getElementById('priority').value;
             const categoryName = document.getElementById('category').value;
-            const currentDate = new Date().toISOString().split('T')[0];
-            const taskId = `${categoryName}${generateRandomId()}`;
+
+            if (!title || !dueDate || !priority || !categoryName) {
+                alert('Por favor, completa todos los campos obligatorios.');
+                return;
+            }
+
+            const today = new Date();
+            const currentDate = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+            const categories = saveCategories();
+            const category = categories.find(cat => cat.name === categoryName);
+            const taskId = `${category.id}${generateRandomId()}`;
+
             const task = {
                 id: taskId,
                 title,
@@ -33,6 +45,7 @@ function addFormListener() {
                 category: categoryName,
                 startDate: currentDate
             };
+
             addTask(task);
             taskForm.reset();
             alert('Tarea guardada con éxito!');
