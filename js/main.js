@@ -147,7 +147,8 @@ function addFormListener() {
                 dueDate,
                 priority,
                 category: categoryName,
-                startDate: currentDate
+                startDate: currentDate,
+                status: 'Pendiente'
             };
 
             addTask(task);
@@ -178,7 +179,7 @@ function addTask(task) {
     saveTasks(tasks);
 }
 
-// Mostrar tareas al cargar la página
+
 document.addEventListener('DOMContentLoaded', () => {
     loadPage('./Alltask/AllTask.html');
     addCategoryListener();
@@ -188,4 +189,5 @@ document.addEventListener('DOMContentLoaded', () => {
         else if (currentPage.includes('Tareas por categoría')) openCategory();
         else alert('Formulario no disponible para esta vista.');
     });
+
 });

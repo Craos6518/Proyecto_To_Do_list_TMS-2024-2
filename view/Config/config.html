@@ -1,4 +1,29 @@
-<div class="main-content">
-    <h1>Vista de configuracion</h1>
-    <h2>Vista de comfiguracion solo disponible recordatorios y notificaciones</h2>
-</div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="configuracion">
+        <h1>Configuración de Recordatorios y Notificaciones</h1>
+        <form id="config-form">
+            <label for="notificaciones">
+                Notificaciones:
+                <input type="checkbox" id="notificaciones" name="notificaciones">
+            </label>
+            <br>
+            <label for="recordatorios">
+                Recordatorios:
+                <input type="time" id="recordatorios" name="recordatorios">
+            </label>
+            <br>
+            <button type="submit">Guardar Cambios</button>
+        </form>
+    </div>
+
+    <script src="configuracion.js"></script>
+</body>
+</html>

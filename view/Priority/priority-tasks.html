@@ -1,3 +1,41 @@
-<div class="main-content">
-    <h1>Vista prioridad</h1>
-</div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Tareas por Prioridad</title>
+</head>
+<body>
+    <div class="sidebar-container">
+        <nav>
+            <a class="nav-button" href="#priority-view">Ver por Prioridad</a>
+            <a class="nav-button" href="#other-view">Otra Vista</a>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        <h1>Tareas por Prioridad</h1>
+        <div id="priority-container">
+            <div class="priority-section" id="critical-section">
+                <h2>Crítico</h2>
+                <div class="task-list" id="critical-tasks"></div>
+            </div>
+            <div class="priority-section" id="urgent-section">
+                <h2>Urgente</h2>
+                <div class="task-list" id="urgent-tasks"></div>
+            </div>
+            <div class="priority-section" id="normal-section">
+                <h2>Normal</h2>
+                <div class="task-list" id="normal-tasks"></div>
+            </div>
+            <div class="priority-section" id="low-section">
+                <h2>Baja</h2>
+                <div class="task-list" id="low-tasks"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

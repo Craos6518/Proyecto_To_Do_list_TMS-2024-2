@@ -56,9 +56,9 @@ if (!localStorage.getItem('tasks')) {
         description: `Descripción de la tarea ${index + 1}`,
         startDate: `2024-10-01`,
         dueDate: `2024-10-31`,
-        priority: index % 3 === 0 ? 'Alta' : index % 3 === 1 ? 'Media' : 'Baja',
+        priority: index % 4 === 0 ? 'Critico' : index % 4 === 1 ? 'Urgente' : index % 4 === 2 ? 'Normal' : 'Baja', // Prioridad
         category: `Categoría ${index % 5 + 1}`,
-        status: index % 2 === 0 ? 'Completada' : 'Pendiente'
+        status: index % 3 === 0 ? 'Completada' : index % 3 === 1 ? 'Pendiente' : 'Aplazado' // Estado
     }));
     localStorage.setItem('tasks', JSON.stringify(tareasSimuladas));
 }
