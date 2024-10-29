@@ -1,0 +1,10 @@
+/* Main stylesheet that imports all other modular styles */
+
+/* Importing all modular styles */
+@import url('sidebar.css');
+@import url('floating-button.css');
+@import url('main-content.css');
+@import url('tasks.css');
+@import url('form.css');
+@import url('modal.css');
+@import url('config.css');

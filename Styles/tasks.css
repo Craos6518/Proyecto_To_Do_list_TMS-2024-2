@@ -1,0 +1,49 @@
+/* Styles for tasks and task-related elements */
+.tasks-container {
+    display: flex; /* Flexbox for layout */
+    justify-content: space-between; /* Space between columns */
+}
+
+.priority-section {
+    background-color: #FFFFFF; /* White background */
+    border: 1px solid #ccc; /* Border around sections */
+    border-radius: 8px; /* Rounded corners */
+    margin: 0 10px; /* Margin between sections */
+    padding: 15px; /* Padding inside sections */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    flex: 1; /* Flex-grow for equal space distribution */
+}
+
+.priority-section h2 {
+    color: #2C3E50; /* Dark text color for section headings */
+    font-size: 24px; /* Font size for section headings */
+    margin-bottom: 10px; /* Bottom margin */
+}
+
+/* Styles for individual tasks */
+.task {
+    background-color: #f9f9f9; /* Light grey background */
+    border: 1px solid #e0e0e0; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px; /* Padding inside tasks */
+    margin-bottom: 10px; /* Margin below tasks */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Shadow effect */
+}
+
+.task h3 {
+    font-size: 18px; /* Font size for task titles */
+    color: #2980B9; /* Blue color for task titles */
+    margin: 0 0 5px; /* Margin below title */
+}
+
+.task p {
+    color: #7F8C8D; /* Grey color for task descriptions */
+    margin: 0; /* Remove margin */
+}
+
+/* Style for no tasks message */
+.task-list p {
+    color: #7F8C8D; /* Grey color for message */
+    font-size: 16px; /* Font size for message */
+    text-align: center; /* Center text */
+}

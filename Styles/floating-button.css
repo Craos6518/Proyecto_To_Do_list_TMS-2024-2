@@ -1,0 +1,23 @@
+/* Styles for the floating action button */
+.floating-btn {
+    position: fixed; /* Fixed position */
+    bottom: 20px; /* Position from the bottom */
+    right: 20px; /* Position from the right */
+    width: 60px; /* Width of the button */
+    height: 60px; /* Height of the button */
+    background-color: #1ABC9C; /* Green background */
+    color: white; /* White text color */
+    border: none; /* No border */
+    border-radius: 50%; /* Circular button */
+    font-size: 24px; /* Font size */
+    text-align: center; /* Center text */
+    line-height: 60px; /* Align text vertically */
+    cursor: pointer; /* Pointer cursor on hover */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transition effects */
+}
+
+.floating-btn:hover {
+    background-color: #16A085; /* Darker green on hover */
+    transform: scale(1.1); /* Scale effect on hover */
+}

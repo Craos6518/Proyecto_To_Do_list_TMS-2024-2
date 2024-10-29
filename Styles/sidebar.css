@@ -1,0 +1,30 @@
+/* Sidebar styles */
+.sidebar-container {
+    width: 250px;
+    height: 100vh;
+    background-color: #34495E; /* Dark blue background for the sidebar */
+    position: fixed; /* Fixed position to stay on the side */
+}
+
+.sidebar-container nav {
+    list-style: none; /* Remove default list styling */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+}
+
+.sidebar-container nav .nav-button {
+    color: white; /* White text for buttons */
+    background-color: transparent; /* Transparent background */
+    text-decoration: none; /* Remove underline */
+    padding: 15px; /* Padding for buttons */
+    display: block; /* Block display for full width */
+    border: none; /* No border */
+    text-align: left; /* Align text to the left */
+    width: 100%; /* Full width */
+    font-size: 16px; /* Font size for buttons */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+.sidebar-container nav .nav-button:hover {
+    background-color: #1ABC9C; /* Light green background on hover */
+}

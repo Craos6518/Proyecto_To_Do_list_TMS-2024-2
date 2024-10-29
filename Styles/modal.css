@@ -1,0 +1,54 @@
+/* Styles for modals */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed position */
+    z-index: 1; /* On top of other elements */
+    left: 0; /* Align left */
+    top: 0; /* Align top */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+}
+
+.modal-content {
+    background-color: white; /* White background for modal content */
+    margin: 10% auto; /* Center modal content */
+    padding: 20px; /* Padding inside modal */
+    border: 1px solid #888; /* Border around modal */
+    width: 50%; /* Width of modal */
+}
+
+.close {
+    color: red; /* Red color for close button */
+    float: right; /* Align right */
+    font-size: 28px; /* Font size */
+    font-weight: bold; /* Bold text */
+}
+
+.close:hover,
+.close:focus {
+    color: black; /* Change color on hover/focus */
+    cursor: pointer; /* Pointer cursor */
+}
+
+.modal h2 {
+    margin-top: 0; /* Remove top margin */
+}
+
+.modal p {
+    margin: 5px 0; /* Margin for paragraphs */
+}
+
+/* Priority styles */
+.priority {
+    font-weight: bold; /* Bold text for priority */
+    color: red; /* Default red color */
+}
+
+.priority.normal {
+    color: orange; /* Orange for normal priority */
+}
+
+.priority.baja {
+    color: green; /* Green for low priority */
+}
