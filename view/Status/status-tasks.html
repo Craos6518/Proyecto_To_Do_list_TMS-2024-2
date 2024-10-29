@@ -1,3 +1,52 @@
-<div class="main-content">
-    <h1>Vista por estatus</h1>
-</div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vista de Estado de Tareas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="sidebar-container">
+        <nav>
+            <a href="#" class="nav-button">Inicio</a>
+            <a href="#" class="nav-button">Tareas</a>
+            <a href="#" class="nav-button">Categorías</a>
+            <a href="#" class="nav-button">Configuración</a>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        <h1>Estado de las Tareas</h1>
+        
+        <div class="task-list">
+            <div class="priority-section">
+                <h2>Tareas Completadas</h2>
+                <div id="completed-tasks" class="task-column"></div>
+            </div>
+            
+            <div class="priority-section">
+                <h2>Tareas Pendientes</h2>
+                <div id="pending-tasks" class="task-column"></div>
+            </div>
+            
+            <div class="priority-section">
+                <h2>Tareas Aplazadas</h2>
+                <div id="postponed-tasks" class="task-column"></div>
+            </div>
+        </div>
+    
+        <div id="task-details" class="task-details" style="display: none;">
+            <h3>Detalles de la Tarea</h3>
+            <p id="task-title"></p>
+            <p id="task-description"></p>
+            <p id="task-due-date"></p>
+            <p id="task-priority"></p>
+            <p id="task-category"></p>
+            <p id="task-start-date"></p>
+            <button onclick="hideTaskDetails()">Cerrar</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

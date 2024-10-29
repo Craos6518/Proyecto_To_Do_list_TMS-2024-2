@@ -147,7 +147,8 @@ function addFormListener() {
                 dueDate,
                 priority,
                 category: categoryName,
-                startDate: currentDate
+                startDate: currentDate,
+                status: 'Pendiente'
             };
 
             addTask(task);
