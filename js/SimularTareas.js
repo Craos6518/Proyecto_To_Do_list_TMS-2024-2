@@ -6,7 +6,7 @@ const tareasSimuladas = Array.from({ length: 20 }, (_, index) => ({
     startDate: `2024-10-01`, // Fecha de inicio
     dueDate: `2024-10-31`, // Fecha de vencimiento
     priority: index % 3 === 0 ? 'Alta' : index % 3 === 1 ? 'Media' : 'Baja', // Prioridad
-    category: `Categoría ${index % 5 + 1}`, // Categoría
+    category: `Categoría ${index % 10 + 1}`, // Categoría
     status: index % 2 === 0 ? 'Completada' : 'Pendiente' // Estado
 }));
 

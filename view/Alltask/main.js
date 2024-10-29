@@ -56,13 +56,47 @@ if (!localStorage.getItem('tasks')) {
         startDate: `2024-10-01`,
         dueDate: `2024-10-31`,
         priority: index % 3 === 0 ? 'Alta' : index % 3 === 1 ? 'Media' : 'Baja',
-        category: `Categoría ${index % 5 + 1}`,
+        category: `Categoría ${index % 10 + 1}`,
         status: index % 2 === 0 ? 'Completada' : 'Pendiente'
     }));
     localStorage.setItem('tasks', JSON.stringify(tareasSimuladas));
 }
 
+
+// Parte superior: Todo lo relacionado a la barra de navegación
+
+// Función para cargar la barra de navegación
+fetch('view/Navbar/navbar.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('sidebar-container').innerHTML = data;
+
+        // Añadir manejadores de eventos a los botones de la barra de navegación
+        document.querySelectorAll('.nav-button').forEach(button => {
+            button.addEventListener('click', (event) => {
+                const page = event.target.getAttribute('data-page');
+                loadPage(page);
+            });
+        });
+    })
+    .catch(error => {
+        console.error('Error al cargar la barra de navegación:', error);
+    });
+
+// Función para cargar contenido dinámico
+function loadPage(page) {
+    fetch(`view/${page}`)
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('main-content').innerHTML = data;
+        })
+        .catch(error => {
+            console.error('Error al cargar la página:', error);
+        });
+}
+
 // Mostrar tareas al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
+    loadPage('./Alltask/AllTaskPrueba.html');
     mostrarTareas(); // Mostrar tareas después de que la página se haya cargado
 });

@@ -1,4 +1,4 @@
-.main-content {
+.container {
     margin-left: 250px; /* Deja espacio para la barra lateral */
     padding: 20px; /* Añadir padding para un mejor espaciado interno */
     background-color: #f5f5f5; /* Fondo claro para contrastar con las tareas */
@@ -43,13 +43,6 @@
 .load-more-button:hover {
     background-color: #16A085;
     transform: translateY(-2px); /* Efecto de elevación al pasar el cursor */
-}
-
-.loading-spinner {
-    text-align: center;
-    font-size: 18px;
-    color: #1ABC9C; /* Color del texto del spinner */
-    margin: 20px auto; /* Centrando el spinner */
 }
 
 /* Barra de navegación vertical */
