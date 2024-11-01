@@ -1,11 +1,16 @@
 function mostrarTareasPorPrioridad() {
     const tareas = getTasks();
-    
     // Contenedores para cada prioridad
     const criticalTasks = document.getElementById('critical-tasks');
     const urgentTasks = document.getElementById('urgent-tasks');
     const normalTasks = document.getElementById('normal-tasks');
     const lowTasks = document.getElementById('low-tasks');
+
+    // Verificar que los contenedores existan
+    if (!criticalTasks || !urgentTasks || !normalTasks || !lowTasks) {
+        console.error('Uno o más contenedores de prioridad no se encontraron en el DOM.');
+        return;
+    }
 
     // Limpiar los contenedores
     criticalTasks.innerHTML = '';
@@ -22,19 +27,21 @@ function mostrarTareasPorPrioridad() {
             <p>Fecha de vencimiento: ${tarea.dueDate}</p>
         `;
 
-        switch (tarea.priority) {
-            case 'Critico':
+        switch (tarea.priority.toLowerCase()) {
+            case 'critico':
                 criticalTasks.appendChild(tareaElemento);
                 break;
-            case 'Urgente':
+            case 'urgente':
                 urgentTasks.appendChild(tareaElemento);
                 break;
-            case 'Normal':
+            case 'normal':
                 normalTasks.appendChild(tareaElemento);
                 break;
-            case 'Baja':
+            case 'baja':
                 lowTasks.appendChild(tareaElemento);
                 break;
+            default:
+                console.warn(`Prioridad desconocida: ${tarea.priority}`);
         }
     });
 }
@@ -45,28 +52,25 @@ function getTasks() {
     return tasks ? JSON.parse(tasks) : [];
 }
 
-// Simulación de tareas en localStorage (solo para desarrollo)
-if (!localStorage.getItem('tasks')) {
-    const tareasSimuladas = Array.from({ length: 20 }, (_, index) => ({
-        taskId: String(index + 1).padStart(8, '0'), // ID de 8 dígitos
-        title: `Tarea ${index + 1}`,
-        description: `Descripción de la tarea ${index + 1}`,
-        startDate: `2024-10-01`,
-        dueDate: `2024-10-31`,
-        priority: ['Critico', 'Urgente', 'Normal', 'Baja'][index % 4], // Asignación cíclica de prioridades
-        category: `Categoría ${index % 5 + 1}`, // Aseguramos que las tareas estén asignadas a categorías simuladas
-        status: index % 3 === 0 ? 'Completada' : index % 3 === 1 ? 'Pendiente' : 'Aplazado' // Estado
-    }));
-    localStorage.setItem('tasks', JSON.stringify(tareasSimuladas));
-}
-
 // Mostrar tareas por prioridad al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
-    mostrarTareasPorPrioridad(); // Mostrar tareas después de que la página se haya cargado
+    mostrarTareasPorPrioridad();
 });
 
-// Función para añadir una nueva tarea (ejemplo)
-function addTask() {
-    // Lógica para añadir una nueva tarea (puedes implementarla según sea necesario)
-    alert("Función para agregar tarea no implementada.");
-}
+// Cargar la barra de navegación desde navbar.html y añadir eventos de redirección
+fetch('/Navbar/navbar.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('sidebar-container').innerHTML = data;
+
+        // Añadir manejadores de eventos a los botones de la barra de navegación
+        document.querySelectorAll('.nav-button').forEach(button => {
+            button.addEventListener('click', (event) => {
+                const page = event.target.getAttribute('data-page');
+                window.location.href = page;
+            });
+        });
+    })
+    .catch(error => {
+        console.error('Error al cargar la barra de navegación:', error);
+    });

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recordatorio de Tarea Pendiente</title>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+<!-- Modal -->
+<!-- Modal de tarea próxima a vencer -->
+<div id="taskModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="taskTitle"></h2>
+        <p>Fecha de vencimiento: <span id="dueDate"></span></p>
+        <p id="taskDescription"></p>
+        <p>Prioridad: <span id="taskPriority"></span></p>
+        <p>Estado: <span id="taskStatus"></span></p>
+    </div>
+</div>
+
+<script src="./notification.js"></script>
+
+</body>
+</html>

@@ -1,20 +1,28 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestor de Tareas</title>
-    <link rel="stylesheet" href="./Styles/styles.css"> <!-- Estilos CSS (opcional) -->
+    <title>Gestión de Tareas</title>
+    <link rel="stylesheet" href="/css/styles.css"/>
 </head>
 <body>
     <!-- Sección de la barra de navegación -->
     <nav id="sidebar-container"></nav>
-
-        <!-- Sección de contenido principal -->
-        <main id="main-content"> </main>
+    <!-- Botón flotante -->
+    <button class="floating-btn" onclick="openTaskForm()" aria-label="Crear nueva tarea">+</button>
+     <!-- AllTask.html -->
+    <div id="main-content">
+        <div class="container">
+            <h1>Lista de Tareas</h1>
+            <div id="tareas-container"></div>
+            <!-- Contenedor para las tareas -->
+            <button id="load-more-button" class="load-more-button" style="display: none;">Cargar más tareas</button>
+        </div>
     </div>
-    <script src="./js/app.js"></script>
-    <!-- <script src="./js/main.js"></script>  Archivo JavaScript donde está el código -->
-    <!-- <script type="module" src="./scripts/main.js"></script>-->
+    <!-- Modal de tarea próxima a vencer -->
+    
+
+    <script src="/js/main.js"></script>
 </body>
 </html>

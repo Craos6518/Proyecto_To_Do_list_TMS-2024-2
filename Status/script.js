@@ -95,3 +95,21 @@ document.addEventListener('DOMContentLoaded', () => {
 function addTask() {
     alert("Función para agregar tarea no implementada.");
 }
+
+// Cargar la barra de navegación desde navbar.html y añadir eventos de redirección
+fetch('/Navbar/navbar.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('sidebar-container').innerHTML = data;
+
+        // Añadir manejadores de eventos a los botones de la barra de navegación
+        document.querySelectorAll('.nav-button').forEach(button => {
+            button.addEventListener('click', (event) => {
+                const page = event.target.getAttribute('data-page');
+                window.location.href = page; // Redirige a la página HTML especificada
+            });
+        });
+    })
+    .catch(error => {
+        console.error('Error al cargar la barra de navegación:', error);
+    });

@@ -1,5 +1,4 @@
-/*css/styles.css*/
-/* Barra de navegación vertical */
+/* Estilos para la barra de navegación vertical */
 .sidebar-container {
     width: 250px;
     height: 100vh;
@@ -30,6 +29,196 @@
     background-color: #1ABC9C;
 }
 
+/* Estilos para el contenido principal */
+#main-content {
+    margin-left: 250px; /* Espacio reservado para la barra lateral */
+    padding: 20px; /* Padding para el contenido */
+    height: 100vh; /* Altura completa de la ventana */
+    overflow-y: auto; /* Desplazable si el contenido desborda */
+    background-color: #ECF0F1; /* Color de fondo claro */
+    box-sizing: border-box; /* Incluir padding en el ancho/alto */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    border-radius: 8px; /* Bordes redondeados */
+}
+
+#main-content h1 {
+    color: #2C3E50; /* Color oscuro para encabezados */
+    font-size: 28px; /* Tamaño de fuente para encabezados */
+    margin-bottom: 20px; /* Margen inferior */
+}
+
+/* Estilos para las categorías */
+#tareas-container {
+    display: grid; /* Usar grid para el contenedor de tareas */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Columnas flexibles */
+    gap: 20px; /* Espacio entre categorías */
+    padding: 20px; /* Agregar padding para mayor separación */
+}
+
+.categoria {
+    background-color: #ffffff; /* Fondo blanco para las categorías */
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para las tareas */
+.tarea {
+    background-color: #e3f2fd; /* Fondo azul claro para las tareas */
+    padding: 15px; /* Espaciado aumentado */
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Sombras sutiles */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Transición para efectos */
+}
+
+.tarea:hover {
+    transform: translateY(-2px); /* Efecto de elevación */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Sombras más marcadas al pasar el cursor */
+}
+
+/* Botón "Cargar más" */
+.load-more-button {
+    margin: 20px auto; 
+    padding: 12px 24px; /* Aumentar el padding para hacerlo más atractivo */
+    background-color: #1ABC9C;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px; /* Aumentar el tamaño de la fuente */
+    display: block; 
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombras más pronunciadas */
+}
+
+.load-more-button:hover {
+    background-color: #16A085;
+    transform: translateY(-2px); /* Efecto de elevación al pasar el cursor */
+}
+
+/* Estilos para el formulario */
+.task-form {
+    max-width: 500px; /* Ancho máximo del formulario */
+    margin: 0 auto; /* Centrar el formulario */
+    background-color: #FFFFFF; /* Fondo blanco */
+    padding: 2em; /* Padding dentro del formulario */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+.task-form h1 {
+    font-size: 1.8em; /* Tamaño de fuente para el encabezado del formulario */
+    color: #2C3E50; /* Color oscuro para el encabezado */
+    text-align: center; /* Centrar el encabezado */
+    margin-bottom: 1em; /* Margen inferior */
+}
+
+.form-group {
+    margin-bottom: 1.5em; /* Margen debajo de los grupos de formularios */
+}
+
+label {
+    display: block; /* Mostrar etiquetas como bloques */
+    font-weight: bold; /* Texto en negrita para las etiquetas */
+    color: #555; /* Color gris oscuro para las etiquetas */
+    margin-bottom: 0.5em; /* Margen inferior */
+}
+
+input[type="text"],
+input[type="date"],
+textarea,
+select {
+    width: 100%; /* Ancho completo */
+    padding: 0.75em; /* Padding dentro de inputs */
+    border-radius: 5px; /* Bordes redondeados */
+    border: 1px solid #ccc; /* Borde ligero */
+    font-size: 1em; /* Tamaño de fuente */
+    color: #333; /* Color de texto oscuro */
+    background-color: #f9f9f9; /* Fondo gris claro */
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+textarea:focus,
+select:focus {
+    outline: none; /* Quitar el contorno */
+    border-color: #4a90e2; /* Borde azul al enfocar */
+    box-shadow: 0 0 5px rgba(74, 144, 226, 0.3); /* Efecto de sombra */
+}
+
+textarea {
+    resize: vertical; /* Permitir redimensionamiento vertical */
+    min-height: 80px; /* Altura mínima */
+}
+
+button[type="submit"] {
+    width: 100%; /* Ancho completo */
+    padding: 1em; /* Aumentar padding en botones */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 1em; /* Tamaño de fuente */
+    font-weight: bold; /* Texto en negrita */
+    color: #fff; /* Texto blanco */
+    background-color: #4a90e2; /* Fondo azul */
+    cursor: pointer; /* Cursor de puntero */
+    transition: background-color 0.3s ease; /* Transición para el color de fondo */
+}
+
+button[type="submit"]:hover {
+    background-color: #357ab8; /* Azul más oscuro al pasar el cursor */
+}
+
+button[type="submit"]:active {
+    background-color: #2e63a2; /* Azul aún más oscuro cuando está activo */
+}
+
+/* Estilos para las tarjetas de tareas */
+.task-container {
+    display: flex;
+    flex-wrap: wrap; /* Permitir que las tareas se envuelvan en múltiples filas */
+    gap: 20px; /* Espacio entre las tarjetas de tareas */
+    margin-top: 20px; /* Espacio arriba del contenedor */
+}
+
+.task-card {
+    background-color: #FFFFFF; /* Fondo blanco */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+    padding: 15px; /* Padding interno */
+    flex: 1 1 calc(30% - 20px); /* Controlar el tamaño de las tarjetas (3 columnas) */
+    min-width: 250px; /* Tamaño mínimo para las tarjetas */
+    position: relative; /* Para posicionar los botones dentro de la tarjeta */
+}
+
+.task-card h3 {
+    margin: 0 0 10px; /* Espacio entre el título y el contenido */
+    font-size: 1.5em; /* Tamaño de fuente para el título */
+}
+
+.task-card p {
+    margin: 0 0 10px; /* Espacio entre el texto de la tarea */
+}
+
+.task-card .button-container {
+    display: flex;
+    justify-content: space-between; /* Distribuir botones en extremos */
+    margin-top: 10px; /* Espacio arriba de los botones */
+}
+
+.task-card button {
+    background-color: #1ABC9C; /* Color del botón */
+    color: white; /* Texto blanco */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px; /* Padding interno */
+    cursor: pointer; /* Cursor de puntero */
+    transition: background-color 0.3s ease; /* Transición para el color de fondo */
+}
+
+.task-card button:hover {
+    background-color: #16A085; /* Color del botón al pasar el cursor */
+}
+
 /* Estilos para el botón flotante */
 .floating-btn {
     position: fixed;
@@ -43,111 +232,15 @@
     border-radius: 50%;
     font-size: 24px;
     text-align: center;
-    line-height: 60px;
+    line-height: 60px; /* Centrar el texto verticalmente */
     cursor: pointer;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra del botón */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones */
 }
 
 .floating-btn:hover {
-    background-color: #16A085;
-    transform: scale(1.1);
+    background-color: #16A085; /* Color del botón flotante al pasar el cursor */
+    transform: scale(1.1); /* Escalado al pasar el cursor */
 }
 
-/* Estilos para el contenido principal */
-.main-content {
-    margin-left: 250px; /* Espacio reservado para la barra lateral */
-    padding: 20px;
-    height: 100vh;
-    overflow-y: auto; /* Para que el contenido sea desplazable si es necesario */
-    background-color: #ECF0F1;
-    box-sizing: border-box;
-}
-
-.main-content h1 {
-    color: #2C3E50;
-    font-size: 28px;
-    margin-bottom: 20px;
-}
-
-.main-content p {
-    color: #7F8C8D;
-    font-size: 16px;
-    line-height: 1.6;
-}
-
-/* Formulario */
-.task-form {
-    max-width: 500px;
-    margin: 0 auto;
-    background-color: #FFFFFF;
-    padding: 2em;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.task-form h1 {
-    font-size: 1.8em;
-    color: #2C3E50;
-    text-align: center;
-    margin-bottom: 1em;
-}
-
-.form-group {
-    margin-bottom: 1.5em;
-}
-
-label {
-    display: block;
-    font-weight: bold;
-    color: #555;
-    margin-bottom: 0.5em;
-}
-
-input[type="text"],
-input[type="date"],
-textarea,
-select {
-    width: 100%;
-    padding: 0.75em;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 1em;
-    color: #333;
-    background-color: #f9f9f9;
-}
-
-input[type="text"]:focus,
-input[type="date"]:focus,
-textarea:focus,
-select:focus {
-    outline: none;
-    border-color: #4a90e2;
-    box-shadow: 0 0 5px rgba(74, 144, 226, 0.3);
-}
-
-textarea {
-    resize: vertical;
-    min-height: 80px;
-}
-
-button[type="submit"] {
-    width: 100%;
-    padding: 0.75em;
-    border: none;
-    border-radius: 5px;
-    font-size: 1em;
-    font-weight: bold;
-    color: #fff;
-    background-color: #4a90e2;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-button[type="submit"]:hover {
-    background-color: #357ab8;
-}
-
-button[type="submit"]:active {
-    background-color: #2e63a2;
-}
+/* Fin de los estilos combinados */

@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Tareas</title>
+    <link rel="stylesheet" href="/css/styles.css" /><!-- Asegúrate de enlazar tu archivo CSS -->
+</head>
+<body>
+    <nav id="sidebar-container"></nav>
+    <!-- Botón flotante -->
+    <button class="floating-btn" onclick="openCategory()" aria-label="Crear nueva tarea">+</button>
+    <div id="main-content">
+        <h1>Lista de Categorías</h1>
+        <div id="tareas-container"></div> <!-- Contenedor para las categorías y tareas -->
+        
+        <button id="load-more-button" class="load-more-button" style="display: none;">Cargar más tareas</button> <!-- Botón para cargar más categorías -->
+    </div>
+   
+    <script src="/Categories/script.js"></script> <!-- Enlaza tu archivo JavaScript -->
+</body>
+</html>

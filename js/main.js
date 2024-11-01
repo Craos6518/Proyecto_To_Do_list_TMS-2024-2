@@ -1,100 +1,88 @@
-//js/main.js
-// Parte superior: Todo lo relacionado a la barra de navegación
+// Funciones de Tareas
+// ===================
 
-// Función para cargar la barra de navegación
-fetch('view/Navbar/navbar.html')
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById('sidebar-container').innerHTML = data;
+// Función para mostrar tareas desde localStorage en el contenedor 'tareas-container'
 
-        // Añadir manejadores de eventos a los botones de la barra de navegación
-        document.querySelectorAll('.nav-button').forEach(button => {
-            button.addEventListener('click', (event) => {
-                const page = event.target.getAttribute('data-page');
-                loadPage(page);
-            });
-        });
-    })
-    .catch(error => {
-        console.error('Error al cargar la barra de navegación:', error);
-    });
+function mostrarTareas(maxRows = 3) {
+    const tareas = getTasks();
+    const contenedorTareas = document.getElementById('tareas-container');
+    const loadMoreButton = document.getElementById('load-more-button');
+    contenedorTareas.innerHTML = ''; // Limpiar el contenedor
 
-// Función para cargar contenido dinámico
-function loadPage(page) {
-    fetch(`view/${page}`)
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('main-content').innerHTML = data;
-        })
-        .catch(error => {
-            console.error('Error al cargar la página:', error);
-        });
+    // Verifica si hay tareas para mostrar
+    if (tareas.length === 0) {
+        contenedorTareas.innerHTML = '<p>No hay tareas disponibles.</p>';
+        loadMoreButton.style.display = 'none';
+        return;
+    }
+
+    const tasksPerRow = 2; // Número de tareas por fila
+    let tareasAMostrar = maxRows * tasksPerRow; // Cantidad de tareas a mostrar inicialmente
+    tareasAMostrar = Math.min(tareasAMostrar, tareas.length); // Limitar la cantidad si hay menos tareas
+
+    for (let i = 0; i < tareasAMostrar; i++) {
+        const tarea = tareas[i];
+        const tareaElemento = document.createElement('div');
+        tareaElemento.classList.add('tarea');
+        
+        // Definir el HTML de cada tarea
+        tareaElemento.innerHTML = `
+            <h3>${tarea.title}</h3>
+            <p><strong>Descripción:</strong> ${tarea.description}</p>
+            <p><strong>Fecha de vencimiento:</strong> ${tarea.dueDate}</p>
+        `;
+        
+        contenedorTareas.appendChild(tareaElemento);
+    }
+
+    // Mostrar el botón "Cargar más" si hay tareas adicionales
+    loadMoreButton.style.display = tareas.length > tareasAMostrar ? 'block' : 'none';
+
+    // Manejo del evento para cargar más tareas sin redirigir
+    loadMoreButton.onclick = () => {
+        maxRows += 2; // Incrementa las filas mostradas
+        mostrarTareas(maxRows); // Volver a cargar tareas con el nuevo límite
+    };
+}
+// Función para obtener las tareas desde localStorage
+function getTasks() {
+    return JSON.parse(localStorage.getItem('tasks')) || [];
 }
 
-// Parte central: Todo lo relacionado con formularios y categorías
-
-const MAX_CATEGORIES = 10;
-
-// Generar un ID alfanumérico aleatorio
-function generateRandomId(length = 4) {
-    const characters = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789';
-    return Array.from({ length }, () => characters.charAt(Math.floor(Math.random() * characters.length))).join('');
+// Función para agregar una tarea
+function addTask(task) {
+    const tasks = getTasks();
+    tasks.push(task);
+    saveTasks(tasks);
 }
 
-// Obtener categorías desde LocalStorage
+// Función para guardar tareas en LocalStorage
+function saveTasks(tasks) {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
+
+// Funciones de Categorías
+// =======================
+
+// Función para obtener categorías desde LocalStorage
 function getCategories() {
     return JSON.parse(localStorage.getItem('categories')) || [];
 }
 
-// Guardar categorías en LocalStorage
+// Función para guardar categorías en LocalStorage
 function saveCategory(category) {
     const categories = getCategories();
     categories.push(category);
     localStorage.setItem('categories', JSON.stringify(categories));
 }
 
-// Función para abrir el formulario de categorías
-function openCategory(){
-    fetch('view/Form/create-category.html')
-    .then(response => response.text())
-    .then(data =>{
-        document.getElementById('main-content').innerHTML = data;
-        addCategoryListener();
-    })
-    .catch(error => {
-        console.error('Error al cargar el formulario de categorías:', error);
-    });
-}
-
-// Función para agregar lógica del formulario de categorías
-function addCategoryListener() {
-    const categoryForm = document.getElementById('category-form');
-    categoryForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-
-        const categoryName = document.getElementById('category-name').value.trim();
-        let categories = getCategories();
-        
-        if (categories.length >= MAX_CATEGORIES) {
-            alert('No puedes agregar más de 10 categorías.');
-            return;
-        }
-
-        if (categories.some(category => category.name === categoryName)) {
-            alert('Esta categoría ya existe.');
-            return;
-        }
-
-        const newCategory = { id: generateRandomId(), name: categoryName };
-        saveCategory(newCategory);
-        alert(`Categoría "${categoryName}" creada con éxito.`);
-        categoryForm.reset();
-    });
-}
+// Funciones de Formularios
+// ========================
 
 // Función para abrir el formulario de tareas
 function openTaskForm() {
-    fetch('view/Form/task-form.html')
+    fetch('/Form/task-form.html')
         .then(response => response.text())
         .then(data => {
             document.getElementById('main-content').innerHTML = data;
@@ -105,6 +93,7 @@ function openTaskForm() {
             console.error('Error al cargar el formulario de tarea:', error);
         });
 }
+
 
 // Función para llenar el select de categorías en el formulario de tareas
 function populateCategories() {
@@ -158,37 +147,41 @@ function addFormListener() {
             }
             taskForm.reset();
             alert('Tarea guardada con éxito!');
+            mostrarTareas();
         });
     }
 }
 
-// Función para guardar tareas en LocalStorage
-function saveTasks(tasks) {
-    localStorage.setItem('tasks', JSON.stringify(tasks));
+
+// Funciones Utilitarias
+// =====================
+const MAX_CATEGORIES = 10;
+// Generar un ID alfanumérico aleatorio
+function generateRandomId(length = 4) {
+    const characters = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789';
+    return Array.from({ length }, () => characters.charAt(Math.floor(Math.random() * characters.length))).join('');
 }
 
-// Función para recuperar tareas desde LocalStorage
-function getTasks() {
-    const tasks = localStorage.getItem('tasks');
-    return tasks ? JSON.parse(tasks) : [];
-}
+// Cargar la barra de navegación desde navbar.html y añadir eventos de redirección
+fetch('/Navbar/navbar.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('sidebar-container').innerHTML = data;
 
-// Función para agregar una nueva tarea
-function addTask(task) {
-    const tasks = getTasks();
-    tasks.push(task);
-    saveTasks(tasks);
-}
-
-
-document.addEventListener('DOMContentLoaded', () => {
-    loadPage('./Alltask/AllTask.html');
-    addCategoryListener();
-    document.querySelector('.floating-btn').addEventListener('click', () => {
-        const currentPage = document.getElementById('main-content').innerHTML;
-        if (currentPage.includes('Todas las tareas')) openTaskForm();
-        else if (currentPage.includes('Tareas por categoría')) openCategory();
-        else alert('Formulario no disponible para esta vista.');
+        // Añadir manejadores de eventos a los botones de la barra de navegación
+        document.querySelectorAll('.nav-button').forEach(button => {
+            button.addEventListener('click', (event) => {
+                const page = event.target.getAttribute('data-page');
+                window.location.href = page; // Redirige a la página HTML especificada
+            });
+        });
+    })
+    .catch(error => {
+        console.error('Error al cargar la barra de navegación:', error);
     });
 
+// Mostrar tareas al cargar la página
+document.addEventListener('DOMContentLoaded', () => {
+    
+    mostrarTareas(); // Mostrar tareas después de que la página se haya cargado
 });
