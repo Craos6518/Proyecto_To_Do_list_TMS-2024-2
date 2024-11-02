@@ -30,6 +30,8 @@ function mostrarTareas(maxRows = 3) {
             <h3>${tarea.title}</h3>
             <p><strong>Descripción:</strong> ${tarea.description}</p>
             <p><strong>Fecha de vencimiento:</strong> ${tarea.dueDate}</p>
+            <button onclick="editTask('${tarea.id}')">Editar</button>
+            <button onclick="deleteTask('${tarea.id}')">Eliminar</button>
         `;
         
         contenedorTareas.appendChild(tareaElemento);
@@ -61,6 +63,13 @@ function saveTasks(tasks) {
     localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
+function deleteTask(taskId) {
+    const tasks = getTasks();
+    const updatedTasks = tasks.filter(t => t.id !== taskId); // Filtra la tarea a eliminar
+    saveTasks(updatedTasks); // Guarda las tareas actualizadas
+    alert('Tarea eliminada con éxito!');
+    mostrarTareas(); // Actualiza la vista
+}
 
 // Funciones de Categorías
 // =======================
