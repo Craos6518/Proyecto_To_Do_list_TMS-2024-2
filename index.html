@@ -11,6 +11,11 @@
     <nav id="sidebar-container"></nav>
     <!-- Botón flotante -->
     <button class="floating-btn" onclick="openTaskForm()" aria-label="Crear nueva tarea">+</button>
+     <!-- Modal de tarea próxima a vencer -->
+     <div id="notification" class="notification" style="display:none;">
+        <p id="notification-message"></p>
+        <button onclick="closeNotification()">Cerrar</button>
+    </div>
      <!-- AllTask.html -->
     <div id="main-content">
         <div class="container">
@@ -20,8 +25,7 @@
             <button id="load-more-button" class="load-more-button" style="display: none;">Cargar más tareas</button>
         </div>
     </div>
-    <!-- Modal de tarea próxima a vencer -->
-    
+
 
     <script src="/js/main.js"></script>
 </body>

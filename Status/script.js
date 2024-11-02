@@ -114,4 +114,4 @@ fetch('/Navbar/navbar.html')
     })
     .catch(error => {
         console.error('Error al cargar la barra de navegación:', error);
-    });
+    });   

@@ -43,3 +43,15 @@
 .priority.baja {
     color: green;
 }
+button {
+    margin-top: 10px;
+    padding: 10px;
+    color: white;
+    background-color: blue; /* Cambia el color según tu diseño */
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: darkblue; /* Cambia el color según tu diseño */
+}

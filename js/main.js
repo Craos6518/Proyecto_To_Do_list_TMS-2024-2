@@ -111,17 +111,7 @@ function saveTaskEdit(taskId) {
     alert('Tarea actualizada con éxito!');
     mostrarTareas(); // Refresca la vista de tareas
 }
-function toggleTaskStatus(taskId) {
-    const tasks = getTasks();
-    const task = tasks.find(t => t.id === taskId); // Encuentra la tarea por ID
 
-    if (task) {
-        task.status = task.status === 'Pendiente' ? 'Completada' : 'Pendiente'; // Cambia el estado
-        saveTasks(tasks); // Guarda los cambios
-        alert(`La tarea ha sido marcada como ${task.status}!`);
-        mostrarTareas(); // Actualiza la vista
-    }
-}
 // Funciones de Categorías
 // =======================
 
@@ -242,6 +232,21 @@ fetch('/Navbar/navbar.html')
 
 // Mostrar tareas al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
-    
     mostrarTareas(); // Mostrar tareas después de que la página se haya cargado
 });
+
+function showNotification(message) {
+    const notification = document.getElementById('notification');
+    const notificationMessage = document.getElementById('notification-message');
+    
+    notificationMessage.textContent = message;
+    notification.style.display = 'block';
+
+    setTimeout(() => {
+        notification.style.display = 'none';
+    }, 3000); // Ocultar la notificación después de 3 segundos
+}
+
+function closeNotification() {
+    document.getElementById('notification').style.display = 'none';
+}
