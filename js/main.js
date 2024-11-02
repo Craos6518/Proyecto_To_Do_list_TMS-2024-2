@@ -30,8 +30,9 @@ function mostrarTareas(maxRows = 3) {
             <h3>${tarea.title}</h3>
             <p><strong>Descripción:</strong> ${tarea.description}</p>
             <p><strong>Fecha de vencimiento:</strong> ${tarea.dueDate}</p>
-            <button onclick="editTask('${tarea.id}')">Editar</button>
+            ${tarea.status !== 'Completada' ? `<button onclick="editTask('${tarea.id}')">Editar</button>` : ''}
             <button onclick="deleteTask('${tarea.id}')">Eliminar</button>
+            <button onclick="toggleTaskStatus('${tarea.id}')">${tarea.status === 'Pendiente' ? 'Marcar como Completada' : 'Marcar como Pendiente'}</button>
         `;
         
         contenedorTareas.appendChild(tareaElemento);
@@ -74,6 +75,12 @@ function editTask(taskId) {
     const tasks = getTasks();
     const task = tasks.find(t => t.id === taskId); // Encuentra la tarea a editar
 
+    // Verifica si la tarea está completada y no permite la edición
+    if (task && task.status === 'Completada') {
+        alert('No se puede editar una tarea completada.');
+        return; // Sale de la función si la tarea está completada
+    }
+
     if (!task) return; // Si la tarea no existe, salir de la función
 
     // Crear elementos para edición (o podrías mostrar un modal con un formulario)
@@ -104,7 +111,17 @@ function saveTaskEdit(taskId) {
     alert('Tarea actualizada con éxito!');
     mostrarTareas(); // Refresca la vista de tareas
 }
+function toggleTaskStatus(taskId) {
+    const tasks = getTasks();
+    const task = tasks.find(t => t.id === taskId); // Encuentra la tarea por ID
 
+    if (task) {
+        task.status = task.status === 'Pendiente' ? 'Completada' : 'Pendiente'; // Cambia el estado
+        saveTasks(tasks); // Guarda los cambios
+        alert(`La tarea ha sido marcada como ${task.status}!`);
+        mostrarTareas(); // Actualiza la vista
+    }
+}
 // Funciones de Categorías
 // =======================
 
