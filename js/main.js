@@ -70,6 +70,40 @@ function deleteTask(taskId) {
     alert('Tarea eliminada con éxito!');
     mostrarTareas(); // Actualiza la vista
 }
+function editTask(taskId) {
+    const tasks = getTasks();
+    const task = tasks.find(t => t.id === taskId); // Encuentra la tarea a editar
+
+    if (!task) return; // Si la tarea no existe, salir de la función
+
+    // Crear elementos para edición (o podrías mostrar un modal con un formulario)
+    const contenedorTareas = document.getElementById('tareas-container');
+    contenedorTareas.innerHTML = `
+        <div class="edit-task-form">
+            <h3>Editar Tarea</h3>
+            <label>Título: <input type="text" id="edit-title" value="${task.title}"></label>
+            <label>Descripción: <input type="text" id="edit-description" value="${task.description}"></label>
+            <label>Fecha de Vencimiento: <input type="date" id="edit-dueDate" value="${task.dueDate}"></label>
+            <button onclick="saveTaskEdit('${taskId}')">Guardar Cambios</button>
+            <button onclick="mostrarTareas()">Cancelar</button>
+        </div>
+    `;
+}
+function saveTaskEdit(taskId) {
+    const tasks = getTasks();
+    const taskIndex = tasks.findIndex(t => t.id === taskId); // Encuentra el índice de la tarea
+
+    if (taskIndex === -1) return; // Si la tarea no existe, salir de la función
+
+    // Actualizar los detalles de la tarea
+    tasks[taskIndex].title = document.getElementById('edit-title').value;
+    tasks[taskIndex].description = document.getElementById('edit-description').value;
+    tasks[taskIndex].dueDate = document.getElementById('edit-dueDate').value;
+
+    saveTasks(tasks); // Guarda las tareas actualizadas en LocalStorage
+    alert('Tarea actualizada con éxito!');
+    mostrarTareas(); // Refresca la vista de tareas
+}
 
 // Funciones de Categorías
 // =======================
