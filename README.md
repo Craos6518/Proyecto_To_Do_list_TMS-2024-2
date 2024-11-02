@@ -2,9 +2,12 @@
 # To-Do List Project
 
 ## Descripción
-Una aplicación de To-Do List para gestionar tareas personales, con opciones para crear, editar y categorizar tareas, asignar estados, y añadir subtareas. La aplicación es responsive, diseñada para adaptarse a portátiles, móviles y tablets, utilizando tecnologías como **HTML**, **CSS**, y **JavaScript**. También incluye integración con Google Calendar para sincronizar eventos y recordatorios. Características Principales Gestión de Tareas
+Una aplicación de To-Do List para gestionar tareas personales, con opciones para crear, editar y categorizar tareas, asignar estados, y añadir subtareas. La aplicación es responsive, diseñada para adaptarse a portátiles, móviles y tablets, utilizando tecnologías como **HTML**, **CSS**, y **JavaScript**.  
+
+## Características Principales Gestión de Tareas
 
 Los usuarios pueden añadir nuevas tareas con un título, descripción, subtareas, categoría, y fecha de finalización.
+
 Cada tarea tiene un estado que indica su progreso: 
 
 - **comenzada**
@@ -21,9 +24,6 @@ Los usuarios pueden crear y gestionar categorías personalizadas para clasificar
 
 Se permite un máximo de 10 categorías para una mejor organización.
 
-## Subtareas
-
-Las tareas pueden tener subtareas asociadas, permitiendo un nivel adicional de detalle y gestión.
 
 ## Diseño Responsive
 
@@ -33,9 +33,6 @@ La aplicación se adaptará a diferentes dispositivos, incluyendo portátiles `(
 
 Una interfaz limpia y sencilla para facilitar la adición, edición, y visualización de tareas.
 
-## Integración con Google Calendar
-
-Sincroniza tus tareas y eventos con Google Calendar para una mejor gestión del tiempo y los recordatorios.
 
 ## Tecnologías Utilizadas
 
@@ -44,7 +41,6 @@ Frontend: **HTML, CSS (con diseño responsive), JavaScript.**
 ## Requisitos del Sistema
 
 Navegador Web moderno y actualizado.
-Cuenta de Google para la integración con Google Calendar.
 
 ## Instalación
 
@@ -58,19 +54,12 @@ cd Proyecto_To_Do_list_TMS-2024-2
 
 Abre el archivo index.html en tu navegador para usar la aplicación localmente.
 
-## Configura las credenciales de Google Calendar:
-    Ve a la Google Cloud Console.
-    Crea un nuevo proyecto y habilita la API de Google Calendar.
-    Configura las credenciales OAuth 2.0 y descarga el archivo credentials.json.
-    Coloca el archivo credentials.json en el directorio del proyecto y sigue las instrucciones para cargarlo en el navegador.
-
 ## Uso
 
 Añadir una tarea: Haz clic en "Añadir Tarea" y completa el formulario.
 Editar una tarea: Haz clic en el icono de edición junto a la tarea.
 Eliminar una tarea: Haz clic en el icono de eliminación junto a la tarea.
 Marcar una tarea como completada: Marca la casilla junto a la tarea.
-Integrar con Google Calendar: Ve a la sección de configuración y sigue las instrucciones para conectar tu cuenta de Google.
 
 ## Objetivo del Proyecto
 
@@ -88,4 +77,4 @@ El objetivo de la aplicación es proporcionar una herramienta fácil de usar y a
 
 Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles. Contacto
 
-Para cualquier pregunta o comentario, por favor contacta a f.martinez5@utp.edu.co o 
+Para cualquier pregunta o comentario, por favor contacta a f.martinez5@utp.edu.co 
