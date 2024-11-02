@@ -115,95 +115,34 @@
 
 .task h3 {
     font-size: 18px;
-    color: #2980B9;
+    color: #000000;
     margin: 0 0 5px;
 }
 
 .task p {
-    color: #7F8C8D;
+    color: #51595a;
     margin: 0;
 }
 
 /* Estilo para el mensaje si no hay tareas */
 .task-list p {
-    color: #7F8C8D;
+    color: #303435;
     font-size: 16px;
     text-align: center;
 }
 
-/* Formulario */
-.task-form {
-    max-width: 500px;
-    margin: 0 auto;
-    background-color: #FFFFFF;
-    padding: 2em;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* Colores de prioridad para las tareas */
+.priority-completed {
+    background-color: #FFE800; /* Amarillo para tareas completadas */
+    border: 1px solid #D4B600;
 }
 
-.task-form h1 {
-    font-size: 1.8em;
-    color: #2C3E50;
-    text-align: center;
-    margin-bottom: 1em;
+.priority-pending {
+    background-color: #68B1F4; /* Azul para tareas comenzadas */
+    border: 1px solid #4A90E2;
 }
 
-.form-group {
-    margin-bottom: 1.5em;
+.priority-postponed {
+    background-color: #FF4AC4; /* Rojo para tareas aplazadas */
+    border: 1px solid #C7008E;
 }
-
-label {
-    display: block;
-    font-weight: bold;
-    color: #555;
-    margin-bottom: 0.5em;
-}
-
-input[type="text"],
-input[type="date"],
-textarea,
-select {
-    width: 100%;
-    padding: 0.75em;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 1em;
-    color: #333;
-    background-color: #f9f9f9;
-}
-
-input[type="text"]:focus,
-input[type="date"]:focus,
-textarea:focus,
-select:focus {
-    outline: none;
-    border-color: #4a90e2;
-    box-shadow: 0 0 5px rgba(74, 144, 226, 0.3);
-}
-
-textarea {
-    resize: vertical;
-    min-height: 80px;
-}
-
-button[type="submit"] {
-    width: 100%;
-    padding: 0.75em;
-    border: none;
-    border-radius: 5px;
-    font-size: 1em;
-    font-weight: bold;
-    color: #fff;
-    background-color: #4a90e2;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-button[type="submit"]:hover {
-    background-color: #357ab8;
-}
-
-button[type="submit"]:active {
-    background-color: #2e63a2;
-}
-

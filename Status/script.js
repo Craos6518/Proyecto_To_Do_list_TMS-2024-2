@@ -32,20 +32,36 @@ function mostrarTareasPorEstado() {
     });
 }
 
-// Función para crear el elemento de tarea
 function crearElementoTarea(tarea) {
     const tareaElemento = document.createElement('div');
     tareaElemento.classList.add('task');
+
+    // Aplicar clase de color según la prioridad
+    switch (tarea.status) {
+        case 'Completada':
+            tareaElemento.classList.add('priority-completed');
+            break;
+        case 'Pendiente':
+            tareaElemento.classList.add('priority-pending');
+            break;
+        case 'Aplazado':
+            tareaElemento.classList.add('priority-postponed');
+            break;
+        default:
+            break;
+    }
+
     tareaElemento.innerHTML = `
         <h3>${tarea.title}</h3>
         <p>Fecha de vencimiento: ${tarea.dueDate}</p>
     `;
-    
+
     // Agregar evento de clic
     tareaElemento.addEventListener('click', () => mostrarDetallesTarea(tarea));
     
     return tareaElemento;
 }
+
 
 // Función para mostrar detalles de la tarea
 function mostrarDetallesTarea(tarea) {
@@ -71,20 +87,6 @@ function getTasks() {
     return tasks ? JSON.parse(tasks) : [];
 }
 
-// Simulación de tareas en localStorage (solo para desarrollo)
-if (!localStorage.getItem('tasks')) {
-    const tareasSimuladas = Array.from({ length: 20 }, (_, index) => ({
-        taskId: String(index + 1).padStart(8, '0'), // ID de 8 dígitos
-        title: `Tarea ${index + 1}`,
-        description: `Descripción de la tarea ${index + 1}`,
-        startDate: `2024-10-01`,
-        dueDate: `2024-10-31`,
-        priority: ['Crítico', 'Urgente', 'Normal', 'Baja'][index % 4], // Asignación cíclica de prioridades
-        category: `Categoría ${index % 5 + 1}`, // Aseguramos que las tareas estén asignadas a categorías simuladas
-        status: index % 3 === 0 ? 'Completada' : index % 3 === 1 ? 'Pendiente' : 'Aplazado' // Estado
-    }));
-    localStorage.setItem('tasks', JSON.stringify(tareasSimuladas));
-}
 
 // Mostrar tareas por estado al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
