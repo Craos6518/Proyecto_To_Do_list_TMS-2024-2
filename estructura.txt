@@ -1,22 +1,13 @@
 /Proyecto_To_Do_list_TMS-2024-2
-|- /Styles
-	|- styles.css
-    |- config.css
-    |- form.css
-    |- main-content.css
-    |- modal.css
-    |- sidebar.css
+|- /css
     |- styles.css
-    |- tasks.css
 |- /js
 	|- main.js
 |- /AllTask
 |- /Categories
-    |- category-tasks.html (este llama al archivo /js/main.js)
 |- /Config
 |- /Form
 |- /Navbar
-    |- navbar.html
 |- /Notification
 |- /Priority
 |- /Status
