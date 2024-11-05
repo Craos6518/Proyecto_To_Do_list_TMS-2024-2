@@ -1,4 +1,4 @@
-/* Estilos generales para la barra de navegación vertical */
+ /* Estilos generales para la barra de navegación vertical */
 .sidebar-container {
     width: 250px;
     height: 100vh;
@@ -255,7 +255,7 @@ button[type="submit"]:active {
 }
 
 /* Media queries para diseño responsivo */
-@media (max-width: 1024px) { /* Tablets */
+@media (max-width: 768px) { /* Tablets */
     .sidebar-container {
         width: 200px; /* Reducir ancho de la barra lateral en tablets */
     }
@@ -267,7 +267,7 @@ button[type="submit"]:active {
     }
 }
 
-@media (max-width: 768px) { /* Móviles */
+@media (max-width: 600px) { /* Móviles */
     .sidebar-container {
         width: 100%; /* Ocupa todo el ancho en móviles */
         height: auto; /* Altura automática */

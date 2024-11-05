@@ -103,7 +103,7 @@ function saveCategory(category) {
 
 // Función para abrir el formulario de categorías
 function openCategory(){
-    fetch('/form/create-category-form.html')
+    fetch('/public/Form/create-category-form.html')
     .then(response => response.text())
     .then(data =>{
         document.getElementById('main-content').innerHTML = data;
@@ -141,7 +141,7 @@ function addCategoryListener() {
     });
 }
 // Cargar la barra de navegación desde navbar.html y añadir eventos de redirección
-fetch('/Navbar/navbar.html')
+fetch('/public/Navbar/navbar.html')
     .then(response => response.text())
     .then(data => {
         document.getElementById('sidebar-container').innerHTML = data;

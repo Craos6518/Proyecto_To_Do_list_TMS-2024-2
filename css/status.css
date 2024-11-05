@@ -4,7 +4,7 @@
     height: 100vh;
     background-color: #34495E;
     position: fixed;
-    transition: width 0.3s ease; /* Suaviza el cambio de ancho */
+    transition: width 0.3s ease; /* Añadir transición para cambios en el ancho */
 }
 
 .sidebar-container nav {
@@ -53,7 +53,6 @@
     background-color: #16A085;
     transform: scale(1.1);
 }
-
 /* Estilos para el contenido principal */
 .main-content {
     margin-left: 250px; /* Espacio reservado para la barra lateral */
@@ -154,7 +153,7 @@
 }
 
 /* Media queries para diseño responsivo */
-@media (max-width: 1024px) { /* Tablets */
+@media (max-width: 768px) { /* Tablets */
     .sidebar-container {
         width: 200px; /* Reducir ancho de la barra lateral en tablets */
     }
@@ -164,7 +163,7 @@
     }
 }
 
-@media (max-width: 768px) { /* Móviles */
+@media (max-width: 600px) { /* Móviles */
     .sidebar-container {
         width: 100%; /* Ocupa todo el ancho en móviles */
         height: auto; /* Altura automática */
