@@ -11,7 +11,6 @@ Los usuarios pueden añadir nuevas tareas con un título, descripción, subtarea
 Cada tarea tiene un estado que indica su progreso: 
 
 - **comenzada**
-- **en progreso**
 - **culminada**
 - **aplazada**
 
@@ -75,6 +74,6 @@ El objetivo de la aplicación es proporcionar una herramienta fácil de usar y a
 
 ## Licencia
 
-Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles. Contacto
+Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.
 
 Para cualquier pregunta o comentario, por favor contacta a f.martinez5@utp.edu.co 
