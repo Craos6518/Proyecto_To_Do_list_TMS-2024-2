@@ -144,7 +144,7 @@ function saveCategory(category) {
 
 // Función para abrir el formulario de tareas
 function openTaskForm() {
-    fetch('/Form/task-form.html')
+    fetch('/form/create-task-form.html')
         .then(response => response.text())
         .then(data => {
             document.getElementById('main-content').innerHTML = data;
