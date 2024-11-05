@@ -103,7 +103,7 @@ function saveCategory(category) {
 
 // Función para abrir el formulario de categorías
 function openCategory(){
-    fetch('../Form/create-category.html')
+    fetch('/form/create-category-form.html')
     .then(response => response.text())
     .then(data =>{
         document.getElementById('main-content').innerHTML = data;
