@@ -1,24 +1,24 @@
 /Proyecto_To_Do_list_TMS-2024-2
 |- /css
 	|- styles.css
+    |- status.css
+    |- priority.css
 |- /js
 	|- main.js
+    |- categories.js
+    |- priority.js
+    |- SimularTareas.js (solo desarrollo)
+    |- status.js
 |- /Categories
     |- category-tasks.html
-    |- script.js
-    |- styles.css
 |- /Form
-    |- create-category.html
-    |- task-form.html
+    |- create-category-form.html
+    |- create-task-form.html
 |- /Navbar
     |- navbar.html
 |- /Priority
     |- priority-tasks.html
-    |- script.js
-    |- styles.css
 |- /Status
     |- priority-tasks.html
-    |- script.js
-    |- styles.css
 |- index.html (AllTaskista AllTask)
 
