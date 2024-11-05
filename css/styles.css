@@ -1,4 +1,4 @@
-/* Estilos para la barra de navegación vertical */
+/* Estilos generales para la barra de navegación vertical */
 .sidebar-container {
     width: 250px;
     height: 100vh;
@@ -254,3 +254,30 @@ button[type="submit"]:active {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
+/* Media queries para diseño responsivo */
+@media (max-width: 1024px) { /* Tablets */
+    .sidebar-container {
+        width: 200px; /* Reducir ancho de la barra lateral en tablets */
+    }
+    #main-content {
+        margin-left: 200px; /* Ajustar margen */
+    }
+    .task-card {
+        flex: 1 1 calc(45% - 20px); /* Dos columnas en tablets */
+    }
+}
+
+@media (max-width: 768px) { /* Móviles */
+    .sidebar-container {
+        width: 100%; /* Ocupa todo el ancho en móviles */
+        height: auto; /* Altura automática */
+        position: relative; /* Cambiar a posición relativa */
+    }
+    #main-content {
+        margin-left: 0; /* Sin margen para contenido */
+        padding: 10px; /* Menor padding en móviles */
+    }
+    .task-card {
+        flex: 1 1 100%; /* Una columna en móviles */
+    }
+}

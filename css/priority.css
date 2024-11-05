@@ -4,6 +4,7 @@
     height: 100vh;
     background-color: #34495E;
     position: fixed;
+    transition: width 0.3s ease; /* Añadir transición para cambios en el ancho */
 }
 
 .sidebar-container nav {
@@ -111,4 +112,49 @@
     color: #7F8C8D;
     font-size: 16px;
     text-align: center;
+}
+
+/* Consultas de medios para diseño responsivo */
+@media (max-width: 768px) {
+    .sidebar-container {
+        width: 200px; /* Reducir el ancho en tablets */
+    }
+
+    .main-content {
+        margin-left: 200px; /* Ajustar margen para el contenido */
+    }
+}
+
+@media (max-width: 600px) {
+    .sidebar-container {
+        width: 100%; /* Ocupa todo el ancho en móviles */
+        position: relative; /* Cambiar a posición relativa */
+        height: auto; /* Altura automática */
+    }
+
+    .main-content {
+        margin-left: 0; /* Quitar margen en móviles */
+        padding: 10px; /* Reducir padding en móviles */
+    }
+
+    .floating-btn {
+        bottom: 10px; /* Ajustar la posición del botón flotante */
+        right: 10px; /* Ajustar la posición del botón flotante */
+    }
+
+    .main-content h1 {
+        font-size: 24px; /* Ajustar tamaño de fuente en móviles */
+    }
+
+    .priority-section h2 {
+        font-size: 20px; /* Ajustar tamaño de fuente de los encabezados en secciones */
+    }
+
+    .task h3 {
+        font-size: 16px; /* Ajustar tamaño de fuente para títulos de tareas */
+    }
+
+    .task-list p {
+        font-size: 14px; /* Ajustar tamaño de fuente para mensajes */
+    }
 }

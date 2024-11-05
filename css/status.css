@@ -4,6 +4,7 @@
     height: 100vh;
     background-color: #34495E;
     position: fixed;
+    transition: width 0.3s ease; /* Suaviza el cambio de ancho */
 }
 
 .sidebar-container nav {
@@ -73,7 +74,10 @@
 .tasks-container {
     display: flex; /* Usar flexbox para las columnas */
     justify-content: space-between; /* Espacio entre columnas */
+    flex-wrap: wrap; /* Permitir que las columnas se envuelvan */
+    gap: 20px; /* Espacio entre elementos */
 }
+
 .task-details {
     position: fixed;
     top: 50%;
@@ -86,6 +90,7 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     z-index: 1000; /* Asegura que esté por encima de otros elementos */
 }
+
 /* Secciones de prioridades */
 .priority-section {
     background-color: #FFFFFF;
@@ -95,6 +100,7 @@
     padding: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     flex: 1; /* Permite que cada sección ocupe el mismo espacio */
+    min-width: 250px; /* Ancho mínimo para secciones */
 }
 
 .priority-section h2 {
@@ -145,4 +151,32 @@
 .priority-postponed {
     background-color: #FF4AC4; /* Rojo para tareas aplazadas */
     border: 1px solid #C7008E;
+}
+
+/* Media queries para diseño responsivo */
+@media (max-width: 1024px) { /* Tablets */
+    .sidebar-container {
+        width: 200px; /* Reducir ancho de la barra lateral en tablets */
+    }
+
+    .main-content {
+        margin-left: 200px; /* Ajustar margen */
+    }
+}
+
+@media (max-width: 768px) { /* Móviles */
+    .sidebar-container {
+        width: 100%; /* Ocupa todo el ancho en móviles */
+        height: auto; /* Altura automática */
+        position: relative; /* Cambiar a posición relativa */
+    }
+
+    .main-content {
+        margin-left: 0; /* Sin margen para contenido */
+        padding: 10px; /* Menor padding en móviles */
+    }
+
+    .tasks-container {
+        flex-direction: column; /* Una sola columna en móviles */
+    }
 }
