@@ -62,6 +62,7 @@ function aplazarTarea(dias, taskId) {
         const dueDate = new Date(task.dueDate);
         dueDate.setDate(dueDate.getDate() + dias);
         task.dueDate = dueDate.toISOString().split('T')[0]; // Formato YYYY-MM-DD
+        task.status = 'Aplazado'; // Cambiar el estado a "Aplazado"
         saveTasks(tasks);
         alert(`La tarea ha sido aplazada ${dias} días.`);
         mostrarTareas();
