@@ -176,10 +176,9 @@ fetch('/Proyecto_To_Do_list_TMS-2024-2/public/Navbar/navbar.html')
         document.querySelectorAll('.nav-button').forEach(button => {
             button.addEventListener('click', (event) => {
                 const page = event.target.getAttribute('data-page');
-                window.location.href = page; // Redirige a la página HTML especificada
+                window.location.href = page; // Redirige directamente a la página
             });
-        });
-    })
-    .catch(error => {
-        console.error('Error al cargar la barra de navegación:', error);
-    });
+        });      
+    }  
+    )
+    
