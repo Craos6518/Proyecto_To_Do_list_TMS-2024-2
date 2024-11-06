@@ -9,15 +9,16 @@
     |- priority.js
     |- SimularTareas.js (solo desarrollo)
     |- status.js
-|- /Categories
-    |- category-tasks.html
-|- /Form
-    |- create-category-form.html
-    |- create-task-form.html
-|- /Navbar
-    |- navbar.html
-|- /Priority
-    |- priority-tasks.html
-|- /Status
-    |- priority-tasks.html
-|- index.html (AllTaskista AllTask)
+|- /public
+    |- /Categories
+        |- category-tasks.html
+    |- /Form
+        |- create-category-form.html
+        |- create-task-form.html
+    |- /Navbar
+        |- navbar.html
+    |- /Priority
+        |- priority-tasks.html
+    |- /Status
+        |- priority-tasks.html
+|- index.html (AllTask)

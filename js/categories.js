@@ -13,7 +13,7 @@ function mostrarCategorias(maxRows = 3) {
         return;
     }
 
-    const tasksPerRow = 2; // Número de tareas por fila
+    //const tasksPerRow = 2; // Número de tareas por fila
     let categoriasAMostrar = maxRows; // Cantidad de categorías a mostrar inicialmente
     categoriasAMostrar = Math.min(categoriasAMostrar, categorias.length); // Limitar la cantidad si hay menos categorías
 
@@ -122,7 +122,7 @@ function generateRandomId(length = 4) {
 
 // Función para abrir el formulario de categorías
 function openCategory(){
-    fetch('./public/Form/create-category-form.html')
+    fetch('public/Form/create-category-form.html')
     .then(response => response.text())
     .then(data =>{
         document.getElementById('main-content').innerHTML = data;
