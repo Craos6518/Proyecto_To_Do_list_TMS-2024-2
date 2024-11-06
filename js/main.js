@@ -93,10 +93,13 @@ function saveTasks(tasks) {
 
 function deleteTask(taskId) {
     const tasks = getTasks();
+    const task = tasks.find(t => t.id === taskId); // Encuentra la tarea a eliminar
     const updatedTasks = tasks.filter(t => t.id !== taskId); // Filtra la tarea a eliminar
-    saveTasks(updatedTasks); // Guarda las tareas actualizadas
-    alert('Tarea eliminada con éxito!');
-    mostrarTareas(); // Actualiza la vista
+    if (confirm(`¿Estás seguro de que deseas eliminar la tarea "${task.title}"?`)) {
+        saveTasks(updatedTasks); // Guarda las tareas actualizadas
+        alert('Tarea eliminada con éxito!');
+        mostrarTareas(); // Actualiza la vista
+    }
 }
 function editTask(taskId) {
     const tasks = getTasks();
