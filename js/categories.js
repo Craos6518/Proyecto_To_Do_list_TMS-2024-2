@@ -160,30 +160,23 @@ function addCategoryListener() {
     });
 }
 // Cargar la barra de navegación desde navbar.html y añadir eventos de redirección
-fetch('../public/Navbar/navbar.html')
+// Ruta relativa a navbar.html desde el archivo main.js
+fetch('/Proyecto_To_Do_list_TMS-2024-2/public/Navbar/navbar.html')
     .then(response => {
         if (!response.ok) {
-            throw new Error('Network response was not ok');
+            throw new Error('Error al cargar navbar.html');
         }
         return response.text();
     })
     .then(data => {
-        const sidebarContainer = document.getElementById('sidebar-container');
-        if (!sidebarContainer) {
-            console.error('Elemento con id "sidebar-container" no encontrado.');
-            return;
-        }
-        sidebarContainer.innerHTML = data;
+        // Inserta el contenido de navbar.html en el div con id 'navbar-container'
+        document.getElementById('sidebar-container').innerHTML = data;
 
-        // Añadir manejadores de eventos a los botones de la barra de navegación
+        // Añadir manejadores de eventos si es necesario
         document.querySelectorAll('.nav-button').forEach(button => {
             button.addEventListener('click', (event) => {
                 const page = event.target.getAttribute('data-page');
-                if (page) {
-                    window.location.href = page; // Redirige a la página HTML especificada
-                } else {
-                    console.error('Atributo "data-page" no encontrado en el botón.');
-                }
+                window.location.href = page; // Redirige a la página HTML especificada
             });
         });
     })
