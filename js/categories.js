@@ -122,7 +122,7 @@ function generateRandomId(length = 4) {
 
 // Función para abrir el formulario de categorías
 function openCategory(){
-    fetch('public/Form/create-category-form.html')
+    fetch('/Proyecto_To_Do_list_TMS-2024-2/public/Form/create-category-form.html')
     .then(response => response.text())
     .then(data =>{
         document.getElementById('main-content').innerHTML = data;
