@@ -31,8 +31,15 @@ function mostrarTareas(maxRows = 3) {
             <p><strong>Descripción:</strong> ${tarea.description}</p>
             <p><strong>Fecha de vencimiento:</strong> ${tarea.dueDate}</p>
             ${tarea.status !== 'Completada' ? `<button onclick="editTask('${tarea.id}')">Editar</button>` : ''}
-            <button onclick="deleteTask('${tarea.id}')">Eliminar</button>
-            <button onclick="toggleTaskStatus('${tarea.id}')">${tarea.status === 'Pendiente' ? 'Marcar como Completada' : 'Marcar como Pendiente'}</button>
+            <button class='delete-button' onclick="deleteTask('${tarea.id}')">Eliminar</button>
+            <button class='Complete-button' onclick="toggleTaskStatus('${tarea.id}')">${tarea.status === 'Pendiente' ? '✓Marcar como Completada' : 'Marcar como Pendiente'}</button>
+            <button class="btn-aplazar" onclick="toggleMenu()">Aplazar Tarea</button>
+            <div class="menu-aplazar" id="menu-aplazar">
+                <div onclick="aplazarTarea(1, '${tarea.id}')">1 día</div>
+                <div onclick="aplazarTarea(3, '${tarea.id}')">3 días</div>
+                <div onclick="aplazarTarea(7, '${tarea.id}')">7 días</div>
+                <div onclick="aplazarTarea(14, '${tarea.id}')">14 días</div>
+            </div>
         `;
         
         contenedorTareas.appendChild(tareaElemento);
@@ -47,6 +54,25 @@ function mostrarTareas(maxRows = 3) {
         mostrarTareas(maxRows); // Volver a cargar tareas con el nuevo límite
     };
 }
+function aplazarTarea(dias, taskId) {
+    const tasks = getTasks();
+    const task = tasks.find(t => t.id === taskId);
+
+    if (task) {
+        const dueDate = new Date(task.dueDate);
+        dueDate.setDate(dueDate.getDate() + dias);
+        task.dueDate = dueDate.toISOString().split('T')[0]; // Formato YYYY-MM-DD
+        saveTasks(tasks);
+        alert(`La tarea ha sido aplazada ${dias} días.`);
+        mostrarTareas();
+    }
+}
+
+function toggleMenu() {
+    const menu = document.getElementById('menu-aplazar');
+    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+}
+
 // Función para obtener las tareas desde localStorage
 function getTasks() {
     return JSON.parse(localStorage.getItem('tasks')) || [];
@@ -106,10 +132,20 @@ function saveTaskEdit(taskId) {
     tasks[taskIndex].title = document.getElementById('edit-title').value;
     tasks[taskIndex].description = document.getElementById('edit-description').value;
     tasks[taskIndex].dueDate = document.getElementById('edit-dueDate').value;
+     
+    // Obtener la fecha actual en formato YYYY-MM-DD
+    const today = new Date();
+    const currentDate = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+
+    // Validación de la fecha de vencimiento
+    if (tasks[taskIndex].dueDate < currentDate) {
+        alert('La fecha de vencimiento no puede ser anterior a la fecha actual.');
+        return;
+    }
 
     saveTasks(tasks); // Guarda las tareas actualizadas en LocalStorage
     alert('Tarea actualizada con éxito!');
-    showNotification(`La tarea ha sido marcada como ${task.status}!`); // Muestra la notificación
+    showNotification(`La tarea ha sido marcada como ${tasks[taskIndex].status}!`); // Muestra la notificación
     mostrarTareas(); // Refresca la vista de tareas
 }
 function toggleTaskStatus(taskId) {
@@ -186,11 +222,19 @@ function addFormListener() {
                 return;
             }
 
+            // Obtener la fecha actual en formato YYYY-MM-DD
             const today = new Date();
             const currentDate = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+
+            // Validación de la fecha de vencimiento
+            if (dueDate < currentDate) {
+                alert('La fecha de vencimiento no puede ser anterior a la fecha actual.');
+                return;
+            }
+
             const categories = getCategories();
             const category = categories.find(cat => cat.name === categoryName);
-            const taskId = `${category.id}${generateRandomId()}`;
+            const taskId = `${category?.id || 'default'}${generateRandomId()}`;
 
             const task = {
                 id: taskId,
@@ -205,7 +249,7 @@ function addFormListener() {
 
             addTask(task);
             if (!category) {
-                addCategory(categoryName);
+                category(categoryName);
             }
             taskForm.reset();
             alert('Tarea guardada con éxito!');
@@ -213,6 +257,7 @@ function addFormListener() {
         });
     }
 }
+
 
 
 // Funciones Utilitarias

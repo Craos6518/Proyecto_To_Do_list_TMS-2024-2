@@ -70,7 +70,7 @@
     margin-bottom: 20px;
 }
 
-/* Secciones de prioridades */
+/* Sección de prioridades */
 .priority-section {
     background-color: #FFFFFF;
     border: 1px solid #ccc;
@@ -78,41 +78,66 @@
     margin-bottom: 20px;
     padding: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex: 1; /* Permite que cada sección ocupe el mismo espacio */
+    min-width: 250px; /* Ancho mínimo para secciones */
 }
 
 .priority-section h2 {
     color: #2C3E50;
-    font-size: 24px;
+    font-size: 22px;
     margin-bottom: 10px;
 }
 
-/* Estilo de las tareas */
+/* Lista de tareas */
+.task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espaciado entre las tareas */
+}
+
+/* Estilos individuales para cada prioridad en el fondo de la tarea */
+#critical-tasks .task {
+    background-color: #FF4C4C;
+    color: #000000; /* Color de texto en contraste */
+    border: none;
+}
+
+#urgent-tasks .task {
+    background-color: #FFE800;
+    color: #000000; /* Color de texto en contraste */
+    border: none;
+}
+
+#normal-tasks .task {
+    background-color: #4CAF50;
+    color: #000000; /* Color de texto en contraste */
+    border: none;
+}
+
+#low-tasks .task {
+    background-color: #4EC3F7;
+    color: #000000; /* Color de texto en contraste */
+    border: none;
+}
+
+/* Estilo general de las tareas */
 .task {
-    background-color: #f9f9f9;
-    border: 1px solid #e0e0e0;
     border-radius: 5px;
     padding: 10px;
-    margin-bottom: 10px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
+/* Encabezado de cada tarea */
 .task h3 {
     font-size: 18px;
-    color: #000000;
     margin: 0 0 5px;
 }
 
+/* Texto descriptivo de cada tarea */
 .task p {
-    color: #51595a;
     margin: 0;
 }
 
-/* Estilo para el mensaje si no hay tareas */
-.task-list p {
-    color: #7F8C8D;
-    font-size: 16px;
-    text-align: center;
-}
 
 /* Consultas de medios para diseño responsivo */
 @media (max-width: 768px) {

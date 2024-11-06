@@ -95,7 +95,7 @@
     background-color: #FFFFFF;
     border: 1px solid #ccc;
     border-radius: 8px;
-    margin: 0 10px; /* Espaciado entre columnas */
+    margin: 20px; /* Espaciado entre columnas */
     padding: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     flex: 1; /* Permite que cada sección ocupe el mismo espacio */
@@ -138,8 +138,8 @@
 
 /* Colores de prioridad para las tareas */
 .priority-completed {
-    background-color: #FFE800; /* Amarillo para tareas completadas */
-    border: 1px solid #D4B600;
+    background-color: #4CAF50; /* Verde para tareas completadas */
+    border: 1px solid #48af4c;
 }
 
 .priority-pending {
