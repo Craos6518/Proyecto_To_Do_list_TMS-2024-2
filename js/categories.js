@@ -160,9 +160,10 @@ function addCategoryListener() {
     });
 }
 // Cargar la barra de navegación desde navbar.html y añadir eventos de redirección
-fetch('../public/Navbar/navbar.html')
+fetch('/public/Navbar/navbar.html')
     .then(response => response.text())
     .then(data => {
+        // Insertar el HTML de navbar.html en el contenedor sidebar-container
         document.getElementById('sidebar-container').innerHTML = data;
 
         // Añadir manejadores de eventos a los botones de la barra de navegación
@@ -172,6 +173,11 @@ fetch('../public/Navbar/navbar.html')
                 window.location.href = page; // Redirige a la página HTML especificada
             });
         });
+
+        // Cargar el archivo categories.js dinámicamente después de cargar navbar.html
+        const script = document.createElement('script');
+        script.src = '../../js/categories.js';
+        document.body.appendChild(script);
     })
     .catch(error => {
         console.error('Error al cargar la barra de navegación:', error);
