@@ -160,24 +160,32 @@ function addCategoryListener() {
     });
 }
 // Cargar la barra de navegación desde navbar.html y añadir eventos de redirección
-fetch('/public/Navbar/navbar.html')
-    .then(response => response.text())
+fetch('../public/Navbar/navbar.html')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.text();
+    })
     .then(data => {
-        // Insertar el HTML de navbar.html en el contenedor sidebar-container
-        document.getElementById('sidebar-container').innerHTML = data;
+        const sidebarContainer = document.getElementById('sidebar-container');
+        if (!sidebarContainer) {
+            console.error('Elemento con id "sidebar-container" no encontrado.');
+            return;
+        }
+        sidebarContainer.innerHTML = data;
 
         // Añadir manejadores de eventos a los botones de la barra de navegación
         document.querySelectorAll('.nav-button').forEach(button => {
             button.addEventListener('click', (event) => {
                 const page = event.target.getAttribute('data-page');
-                window.location.href = page; // Redirige a la página HTML especificada
+                if (page) {
+                    window.location.href = page; // Redirige a la página HTML especificada
+                } else {
+                    console.error('Atributo "data-page" no encontrado en el botón.');
+                }
             });
         });
-
-        // Cargar el archivo categories.js dinámicamente después de cargar navbar.html
-        const script = document.createElement('script');
-        script.src = '../../js/categories.js';
-        document.body.appendChild(script);
     })
     .catch(error => {
         console.error('Error al cargar la barra de navegación:', error);
