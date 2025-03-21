@@ -1,3 +1,4 @@
+//categories.js
 // Función para mostrar las categorías
 function mostrarCategorias(maxRows = 3) {
     const tareas = getTasks();
