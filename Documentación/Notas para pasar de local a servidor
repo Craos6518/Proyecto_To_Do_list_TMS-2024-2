@@ -1,0 +1,2 @@
+todos los fetch('/public/Form/create-category-form.html') se trabajan desde public
+la barra de navegacion <button class="nav-button" data-page="/index.html">Todas las tareas</button>
