@@ -123,9 +123,9 @@ function generateRandomId(length = 4) {
 
 // Función para abrir el formulario de categorías
 function openCategory(){
-    fetch('/Proyecto_To_Do_list_TMS-2024-2/public/Form/create-category-form.html')
+    fetch('/public/Form/create-category-form.html')
     .then(response => response.text())
-    .then(data =>{
+    .then(data => {
         document.getElementById('main-content').innerHTML = data;
         addCategoryListener();
     })
@@ -162,7 +162,7 @@ function addCategoryListener() {
 }
 // Cargar la barra de navegación desde navbar.html y añadir eventos de redirección
 // Ruta relativa a navbar.html desde el archivo main.js
-fetch('/Proyecto_To_Do_list_TMS-2024-2/public/Navbar/navbar.html')
+fetch('/public/Navbar/navbar.html')
     .then(response => {
         if (!response.ok) {
             throw new Error('Error al cargar navbar.html');
