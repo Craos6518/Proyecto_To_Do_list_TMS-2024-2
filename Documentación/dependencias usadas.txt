@@ -1,0 +1,74 @@
+📌 Dependencias del Proyecto
+
+Este proyecto utiliza diversas dependencias para garantizar un backend eficiente y seguro. A continuación, se detallan las librerías utilizadas y su propósito.
+
+🔹 Dependencias principales
+
+1. Express
+
+Descripción: Framework minimalista para crear aplicaciones web y APIs en Node.js.
+
+Instalación:
+
+npm install express
+
+Uso:
+Se encarga de manejar rutas, peticiones HTTP y middleware.
+
+2. MySQL2
+
+Descripción: Cliente para conectarse a bases de datos MySQL desde Node.js.
+
+Instalación:
+
+npm install mysql2
+
+Uso:
+Permite realizar consultas a MySQL desde el servidor de Node.js.
+
+3. Cors
+
+Descripción: Middleware que habilita el intercambio de recursos entre distintos dominios (CORS).
+
+Instalación:
+
+npm install cors
+
+Uso:
+Necesario para permitir que el frontend pueda comunicarse con el backend sin restricciones de origen.
+
+4. Dotenv
+
+Descripción: Permite manejar variables de entorno de forma segura.
+
+Instalación:
+
+npm install dotenv
+
+Uso:
+Ayuda a proteger información sensible como credenciales de la base de datos.
+
+🔹 Dependencias para desarrollo
+
+5. Nodemon
+
+Descripción: Herramienta que reinicia automáticamente el servidor cuando hay cambios en el código.
+
+Instalación:
+
+npm install --save-dev nodemon
+
+Uso:
+Se ejecuta con npm run dev y permite un flujo de trabajo más eficiente.
+
+6. Morgan
+
+Descripción: Middleware para registrar solicitudes HTTP en la consola, útil para depuración.
+
+Instalación:
+
+npm install morgan
+
+Uso:
+Facilita la monitorización de peticiones y respuestas del servidor.
+
