@@ -80,15 +80,11 @@ Proyecto_To_Do_list_TMS-2024-2
 
 ## Instalación
 
-1. Github Pages:
-```bash
-https://craos6518.github.io/Proyecto_To_Do_list_TMS-2024-2/
-```
-2. Clona este repositorio:
+1. Clona este repositorio:
    ```bash
    git clone https://github.com/tu_usuario/Proyecto_To_Do_list_TMS-2024-2.git
    ```
-3. Abre el archivo `index.html` en tu navegador para iniciar la aplicación.
+2. Abre el archivo `index.html` en tu navegador para iniciar la aplicación.
 
 ## Uso
 
@@ -100,7 +96,6 @@ https://craos6518.github.io/Proyecto_To_Do_list_TMS-2024-2/
 > **Nota**: Si encuentras un error 404 al intentar acceder a una página que no existe en una ubicación específica, verifica la estructura de carpetas y asegúrate de que el archivo correcto esté en la ruta correspondiente.
 
 > **Nota 2**: Si encuentras un error 404 al intentar acceder a una página que no existe en una ubicación específica, verifica la estructura de carpetas y trata de revisar las rutas, ya sean rutas Rutas **Absolutas, Rutas Relativas,  Relativas al Proyecto.
-
 
 ## Tecnologías Utilizadas
 
