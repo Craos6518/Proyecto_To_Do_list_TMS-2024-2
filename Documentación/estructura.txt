@@ -1,17 +1,4 @@
 /Proyecto_To_Do_list_TMS-2024-2
-|- /backend
-    |- /config
-        |- database.js
-    |- /controllers
-        |- categoryController.js
-        |- taskcontroller.js
-    |- /models
-        |- categoryModel.js
-        |- taskModel.js
-    |- /routes
-        |- categoryRoutes.js
-        |- taskRoutes.js
-    |- server.js
 |- /css
 	|- styles.css
     |- status.css
