@@ -70,5 +70,5 @@ Instalación:
 npm install morgan
 
 Uso:
-Facilita la monitorización de peticiones y respuestas del servidor.
+Facilita la monitorización de peticiones y respuestas del servidor
 
