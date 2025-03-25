@@ -1,4 +1,3 @@
-//priority.js
 function mostrarTareasPorPrioridad() {
     const tareas = getTasks();
     // Contenedores para cada prioridad
@@ -59,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Cargar la barra de navegación desde navbar.html y añadir eventos de redirección
-fetch('/public/Navbar/navbar.html')
+fetch('/Proyecto_To_Do_list_TMS-2024-2/public/Navbar/navbar.html')
     .then(response => response.text())
     .then(data => {
         document.getElementById('sidebar-container').innerHTML = data;
