@@ -1,3 +1,4 @@
+//main.js
 // Funciones de Tareas
 // ===================
 
@@ -184,7 +185,7 @@ function saveCategory(category) {
 
 // Función para abrir el formulario de tareas
 function openTaskForm() {
-    fetch('/Proyecto_To_Do_list_TMS-2024-2/public/Form/create-task-form.html')
+    fetch('/public/Form/create-task-form.html')
         .then(response => response.text())
         .then(data => {
             document.getElementById('main-content').innerHTML = data;
@@ -274,7 +275,7 @@ function generateRandomId(length = 4) {
 }
 
 // Cargar la barra de navegación desde navbar.html y añadir eventos de redirección
-fetch('/Proyecto_To_Do_list_TMS-2024-2/public/Navbar/navbar.html')
+fetch('public/Navbar/navbar.html')
     .then( response => response.text())
     .then(data => {
         document.getElementById('sidebar-container').innerHTML = data;
