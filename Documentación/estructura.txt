@@ -21,4 +21,4 @@
         |- priority-tasks.html
     |- /Status
         |- priority-tasks.html
-|- index.html (AllTask)
+|- index.html (AllTask).
