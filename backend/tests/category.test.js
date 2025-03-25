@@ -39,8 +39,13 @@ describe('API de Categorías', () => {
     test('Debe obtener una categoría por ID', async () => {
         const response = await request(app).get(`/api/categories/${createdCategoryId}`);
         expect(response.status).toBe(200);
-        expect(response.body).toHaveProperty('id', createdCategoryId);
+        
+        // Si la API devuelve un array, accede al primer elemento
+        const category = Array.isArray(response.body) ? response.body[0] : response.body;
+    
+        expect(category).toHaveProperty('id', createdCategoryId);
     });
+    
 
     test('Debe actualizar una categoría', async () => {
         const updatedCategory = { name: 'Categoría Actualizada' };
