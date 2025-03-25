@@ -1,4 +1,20 @@
 /Proyecto_To_Do_list_TMS-2024-2
+<<<<<<< HEAD
+|- /backend
+    |- /api
+        |- /categories
+            |- categoryController.js
+            |- categoryModel.js
+            |- categoryRoutes.js
+        |- /tasks
+            |- taskController.js
+            |- taskModel.js
+            |- taskRoutes.js
+    |- /config
+        |- database.js
+    |- server.js
+=======
+>>>>>>> staging
 |- /css
 	|- styles.css
     |- status.css
@@ -21,4 +37,4 @@
         |- priority-tasks.html
     |- /Status
         |- priority-tasks.html
-|- index.html (AllTask).
+|- index.html (AllTask)
