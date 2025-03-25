@@ -1,7 +1,7 @@
 //!Rutas para CRUD de tareas
 const express = require('express');
 const router = express.Router();
-const taskController = require('../controllers/taskController');
+const taskController = require('./taskController');
 
 router.get('/', taskController.getAllTasks);
 router.get('/:id', taskController.getTaskById);

@@ -1,5 +1,5 @@
 //!# Modelo para tareas
-const db = require('../config/database');
+const db = require('../../config/database');
 const Task = {
     getAll: function (callback) {
         return db.query('SELECT * FROM tasks', callback);

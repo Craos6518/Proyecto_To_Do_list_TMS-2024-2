@@ -1,5 +1,5 @@
 //!# Controlador de tareas
-const Task = require('../models/taskModel');
+const Task = require('./taskModel');
 const getAllTasks = (req, res) => {
     Task.getAll((err, results) => {
         if (err) return res.status(500).json({ error: err.message });
