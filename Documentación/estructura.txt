@@ -1,5 +1,4 @@
 /Proyecto_To_Do_list_TMS-2024-2
-<<<<<<< HEAD
 |- /backend
     |- /api
         |- /categories
@@ -12,8 +11,9 @@
             |- taskRoutes.js
     |- /config
         |- database.js
+    |- /tests
+        |- category.test.js
     |- server.js
-=======
 >>>>>>> staging
 |- /css
 	|- styles.css
