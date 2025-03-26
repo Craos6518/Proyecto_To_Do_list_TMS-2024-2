@@ -1,0 +1,18 @@
+Estoy creando una aplicación web; ya tengo la parte visual usando CSS, la estructura en HTML, y tengo la parte lógica donde almaceno las tareas y categorías en el LocalStorage. Lo que estoy planeando es aplicar el almacenamiento en una base de datos MySQL.
+
+La base de datos ya está creada, y el crud también, te voy a compartir 4 cosas:
+1. la estructura del proyecto
+2. el contenido de api/tasks/taskController.js
+3. api/tasks/taskModel.js
+4. api/tasks/taskRoutes.js
+
+Todo esto con el fin de generar las pruebas del CRUD para las Tareas. Estoy usando las dependecias: Express, MySQL2, Cors, Dotenv, Nodemon, Morgan y hago pruebas en la carpeta api/tests/ de las funcionalidades usando "jest".
+
+Este es el contenido del archivo ".env" para el esatdo prueba:
+# Configuración para pruebas
+TEST_DB_HOST=localhost
+TEST_DB_USER=test_user
+TEST_DB_PASSWORD=Test_6518
+TEST_DB_NAME=gestor_tareas_test
+
+La tarea tiene los siguientes item (id, title, description, dueDate, Priority, category_id, startDate, status) Todos son "NOT NULL" menos "description"
