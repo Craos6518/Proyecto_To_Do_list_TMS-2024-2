@@ -1,43 +1,69 @@
-¡Genial! 🎉 Si ya pasaste las pruebas del CRUD, el siguiente paso es asegurarte de que todo esté funcionando correctamente a nivel de integración y robustez. Aquí hay algunos pasos que puedes seguir:
+# Backlog de Integración Frontend-Backend
 
-### 1. **Pruebas de Integración Completa**
-   Ahora que el CRUD funciona, es importante asegurarte de que todas las partes del sistema (base de datos, API, front-end) trabajen juntas sin problemas. 
+## Objetivos
+Vincular el frontend JavaScript actual con el backend de Express y MySQL, reemplazando el uso de LocalStorage
 
-   - **Realiza pruebas end-to-end (E2E)** para verificar que las funciones de creación, lectura, actualización y eliminación funcionen como se espera desde el front-end hasta el back-end.
-   - **Simula flujos completos**: Crea una categoría, asigna tareas, actualiza tareas, elimina tareas y elimina categorías.
+## Tareas Principales
 
-### 2. **Pruebas de Validación**
-   Asegúrate de que los datos enviados a la API sean válidos y maneja los casos donde los datos sean incorrectos (como valores nulos, incorrectos o fuera de rango).
+### 1. Configuración de Comunicación
+- [ ] T1.1: Configurar peticiones AJAX/Fetch
+  - Modificar funciones de JavaScript para usar `fetch()`
+  - Actualizar URLs de endpoints según configuración del backend
+  - Manejar promesas y async/await
 
-   Ejemplo:
-   - Verificar que no se puede crear una tarea sin título.
-   - Comprobar que la fecha de vencimiento no sea anterior a la fecha de inicio.
-   - Validar que las prioridades sean una de las opciones permitidas.
+### 2. Crear Tareas
+- [ ] T2.1: Modificar función de creación de tareas
+  - Enviar datos al endpoint de crear tarea
+  - Implementar método POST
+  - Manejar respuesta del servidor
+  - Mostrar feedback al usuario (éxito/error)
 
-### 3. **Optimización y Seguridad**
-   - **Revisa el rendimiento**: Asegúrate de que las consultas a la base de datos estén optimizadas, especialmente si estás usando `JOIN` o consultas complejas.
-   - **Autenticación y autorización**: Si el sistema maneja usuarios, asegúrate de implementar y probar correctamente el sistema de autenticación (JWT, OAuth, etc.).
-   - **Validación de seguridad**: Evita inyecciones SQL, ataques XSS y CSRF.
+### 3. Listar Tareas
+- [ ] T3.1: Actualizar función de listado de tareas
+  - Implementar método GET para recuperar tareas
+  - Renderizar tareas desde respuesta del backend
+  - Manejar estado de carga
+  - Gestionar errores de conexión
 
-### 4. **Documentación de la API**
-   - **Generar documentación**: Usa herramientas como Swagger o Postman para documentar tu API, lo que facilita el trabajo para cualquier otro desarrollador que trabaje con tu código.
+### 4. Actualizar Tareas
+- [ ] T4.1: Implementar actualización de tareas
+  - Modificar función de edición para usar método PUT
+  - Enviar datos actualizados al endpoint correspondiente
+  - Validar respuesta del servidor
+  - Actualizar interfaz
 
-### 5. **Despliegue**
-   - **Desplegar en un entorno de producción**: Puedes probar el sistema en un entorno real (como Heroku, AWS, o cualquier otra plataforma de tu elección).
-   - **Revisar configuración de entorno**: Asegúrate de que las variables de entorno para producción (como credenciales de base de datos, claves secretas, etc.) estén correctamente configuradas.
+### 5. Eliminar Tareas
+- [ ] T5.1: Actualizar función de eliminación
+  - Implementar método DELETE
+  - Confirmar eliminación con backend
+  - Actualizar vista tras eliminación
+  - Manejar posibles errores
 
-### 6. **Feedback y Mejoras**
-   - **Prueba con usuarios reales**: Si tienes tiempo, prueba la aplicación con usuarios reales para obtener feedback sobre la usabilidad.
-   - **Iteración**: Ajusta cualquier detalle basado en los comentarios y optimiza la aplicación.
+### 6. Manejo de Errores
+- [ ] T6.1: Implementar gestión de errores
+  - Crear mensajes de error personalizados
+  - Mostrar notificaciones al usuario
+  - Registrar errores de conexión
+  - Implementar reintentos para fallos temporales
 
----
+### 7. Optimización y Seguridad
+- [ ] T7.1: Añadir seguridad a peticiones
+  - Incluir headers de seguridad
+  - Manejar CORS si es necesario
+  - Validar y sanitizar datos antes de envío
 
-### **Resumen de pasos**
-1. Pruebas end-to-end.
-2. Pruebas de validación.
-3. Optimización y seguridad.
-4. Documentación de la API.
-5. Despliegue en producción.
-6. Recoger feedback y mejorar.
+### 8. Pruebas de Integración
+- [ ] T8.1: Realizar pruebas de integración
+  - Probar cada endpoint (crear, listar, actualizar, eliminar)
+  - Verificar respuestas del servidor
+  - Validar flujo completo de datos
 
-¡Estás en el camino correcto! 🚀
+## Consideraciones Adicionales
+- Mantener la estructura actual del frontend
+- Minimizar cambios en la lógica de negocio existente
+- Documentar cambios realizados
+
+## Priorización
+1. Alta Prioridad: Tareas 1, 2, 3
+2. Media Prioridad: Tareas 4, 5, 6
+3. Baja Prioridad: Tareas 7, 8
