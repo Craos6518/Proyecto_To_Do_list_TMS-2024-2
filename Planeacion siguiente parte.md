@@ -58,7 +58,7 @@ Vincular el frontend JavaScript actual con el backend de Express y MySQL, reempl
  Documentar cambios realizados
 
 ## Priorización
-1. Alta Prioridad: Tareas 1, 8
+1. Alta Prioridad: Tareas 1
 2. Media Prioridad: Tareas 2, 3, 6
 3. Baja Prioridad: Tareas 4, 5, 7
 

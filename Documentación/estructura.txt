@@ -14,7 +14,6 @@
     |- /tests
         |- category.test.js
     |- server.js
->>>>>>> staging
 |- /css
 	|- styles.css
     |- status.css
