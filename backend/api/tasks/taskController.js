@@ -1,41 +1,49 @@
-//!# Controlador de tareas
 const Task = require('./taskModel');
-const getAllTasks = (req, res) => {
-    Task.getAll((err, results) => {
-        if (err) return res.status(500).json({ error: err.message });
-        res.json(results);
-    });
+
+const getAllTasks = async (req, res) => {
+    try {
+        const tasks = await Task.getAll();
+        res.json(tasks);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 };
 
-const getTaskById = (req, res) => {
-    Task.getById(req.params.id, (err, results) => {
-        if (err) return res.status(500).json({ error: err.message });
-        if (results.length === 0) return res.status(404).json({ error: 'Tarea no encontrada' });
-        res.json(results[0]);
-    });
+const getTaskById = async (req, res) => {
+    try {
+        const task = await Task.getById(req.params.id);
+        if (!task) return res.status(404).json({ error: 'Tarea no encontrada' });
+        res.json(task);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 };
 
-const createTask = (req, res) => {
-    const newTask = req.body;
-    Task.create(newTask, (err, result) => {
-        if (err) return res.status(500).json({ error: err.message });
-        res.status(201).json({ id: result.insertId, ...newTask });
-    });
+const createTask = async (req, res) => {
+    try {
+        const newTask = await Task.create(req.body);
+        res.status(201).json(newTask);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 };
 
-const updateTask = (req, res) => {
-    const updatedTask = req.body;
-    Task.update(req.params.id, updatedTask, (err, result) => {
-        if (err) return res.status(500).json({ error: err.message });
-        res.json({ message: 'Tarea actualizada', updatedTask });
-    });
+const updateTask = async (req, res) => {
+    try {
+        const updatedTask = await Task.update(req.params.id, req.body);
+        res.json(updatedTask);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 };
 
-const deleteTask = (req, res) => {
-    Task.delete(req.params.id, (err, result) => {
-        if (err) return res.status(500).json({ error: err.message });
-        res.json({ message: 'Tarea eliminada' });
-    });
+const deleteTask = async (req, res) => {
+    try {
+        const message = await Task.delete(req.params.id);
+        res.json(message);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 };
 
 module.exports = { getAllTasks, getTaskById, createTask, updateTask, deleteTask };
