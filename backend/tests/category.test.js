@@ -58,6 +58,7 @@ describe('API de Categorías y Tareas', () => {
             startDate: '2025-03-25',
             status: 'Pendiente'
         };
+        console.log("✅ createdTaskId después de crear tarea:", createdTaskId);
 
         const response = await request(app).post('/api/tasks').send(newTask);
 
