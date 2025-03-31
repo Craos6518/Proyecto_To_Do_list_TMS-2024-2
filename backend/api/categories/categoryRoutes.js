@@ -3,9 +3,16 @@ const express = require("express");
 const router = express.Router();
 const categoryController = require("./categoryController");
 
-router.get("/", categoryController.getAllCategories); //obtengo
+// Obtener todas las categorías
+router.get("/", categoryController.getAllCategories);
+
+// Obtener una categoría específica por ID
 router.get("/:id", categoryController.getCategoryById);
-router.post("/", categoryController.createCategory); //creo
-router.delete("/:id", categoryController.deleteCategory); //Elimino
+
+// Crear una nueva categoría
+router.post("/", categoryController.createCategory);
+
+// Eliminar una categoría específica por ID
+router.delete("/:id", categoryController.deleteCategory);
 
 module.exports = router;
