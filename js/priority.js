@@ -1,55 +1,65 @@
-function mostrarTareasPorPrioridad() {
-    const tareas = getTasks();
-    // Contenedores para cada prioridad
-    const criticalTasks = document.getElementById('critical-tasks');
-    const urgentTasks = document.getElementById('urgent-tasks');
-    const normalTasks = document.getElementById('normal-tasks');
-    const lowTasks = document.getElementById('low-tasks');
+async function mostrarTareasPorPrioridad() {
+    try {
+        const tareas = await getTasks(); // Obtener tareas del backend
+        // Contenedores para cada prioridad
+        const criticalTasks = document.getElementById('critical-tasks');
+        const urgentTasks = document.getElementById('urgent-tasks');
+        const normalTasks = document.getElementById('normal-tasks');
+        const lowTasks = document.getElementById('low-tasks');
 
-    // Verificar que los contenedores existan
-    if (!criticalTasks || !urgentTasks || !normalTasks || !lowTasks) {
-        console.error('Uno o más contenedores de prioridad no se encontraron en el DOM.');
-        return;
-    }
-
-    // Limpiar los contenedores
-    criticalTasks.innerHTML = '';
-    urgentTasks.innerHTML = '';
-    normalTasks.innerHTML = '';
-    lowTasks.innerHTML = '';
-
-    // Filtrar y mostrar tareas según la prioridad
-    tareas.forEach(tarea => {
-        const tareaElemento = document.createElement('div');
-        tareaElemento.classList.add('task');
-        tareaElemento.innerHTML = `
-            <h3>${tarea.title}</h3>
-            <p>Fecha de vencimiento: ${tarea.dueDate}</p>
-        `;
-
-        switch (tarea.priority.toLowerCase()) {
-            case 'critico':
-                criticalTasks.appendChild(tareaElemento);
-                break;
-            case 'urgente':
-                urgentTasks.appendChild(tareaElemento);
-                break;
-            case 'normal':
-                normalTasks.appendChild(tareaElemento);
-                break;
-            case 'baja':
-                lowTasks.appendChild(tareaElemento);
-                break;
-            default:
-                console.warn(`Prioridad desconocida: ${tarea.priority}`);
+        // Verificar que los contenedores existan
+        if (!criticalTasks || !urgentTasks || !normalTasks || !lowTasks) {
+            console.error('Uno o más contenedores de prioridad no se encontraron en el DOM.');
+            return;
         }
-    });
+
+        // Limpiar los contenedores
+        criticalTasks.innerHTML = '';
+        urgentTasks.innerHTML = '';
+        normalTasks.innerHTML = '';
+        lowTasks.innerHTML = '';
+
+        // Filtrar y mostrar tareas según la prioridad
+        tareas.forEach(tarea => {
+            const tareaElemento = document.createElement('div');
+            tareaElemento.classList.add('task');
+            tareaElemento.innerHTML = `
+                <h3>${tarea.title}</h3>
+                <p>Fecha de vencimiento: ${tarea.dueDate}</p>
+            `;
+
+            switch (tarea.priority.toLowerCase()) {
+                case 'critico':
+                    criticalTasks.appendChild(tareaElemento);
+                    break;
+                case 'urgente':
+                    urgentTasks.appendChild(tareaElemento);
+                    break;
+                case 'normal':
+                    normalTasks.appendChild(tareaElemento);
+                    break;
+                case 'baja':
+                    lowTasks.appendChild(tareaElemento);
+                    break;
+                default:
+                    console.warn(`Prioridad desconocida: ${tarea.priority}`);
+            }
+        });
+    } catch (error) {
+        console.error('Error al mostrar tareas por prioridad:', error);
+    }
 }
 
 // Función para obtener las tareas desde localStorage
-function getTasks() {
-    const tasks = localStorage.getItem('tasks');
-    return tasks ? JSON.parse(tasks) : [];
+async function getTasks() {
+    try {
+        const response = await fetch('/api/tasks');
+        if (!response.ok) throw new Error('Error al obtener las tareas');
+        return await response.json();
+    } catch (error) {
+        console.error('Error al obtener las tareas:', error);
+        return [];
+    }
 }
 
 // Mostrar tareas por prioridad al cargar la página

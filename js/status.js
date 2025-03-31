@@ -1,35 +1,45 @@
-function mostrarTareasPorEstado() {
-    const tareas = getTasks();
-    
-    // Contenedores para cada estado
-    const completedTasks = document.getElementById('completed-tasks');
-    const pendingTasks = document.getElementById('pending-tasks');
-    const postponedTasks = document.getElementById('postponed-tasks');
+async function mostrarTareasPorEstado() {
+    try {
+        const tareas = await getTasks(); // Obtener tareas del backend
 
-    // Limpiar los contenedores
-    completedTasks.innerHTML = '';
-    pendingTasks.innerHTML = '';
-    postponedTasks.innerHTML = '';
+        // Contenedores para cada estado
+        const completedTasks = document.getElementById('completed-tasks');
+        const pendingTasks = document.getElementById('pending-tasks');
+        const postponedTasks = document.getElementById('postponed-tasks');
 
-    // Filtrar y mostrar tareas según el estado
-    const completadas = tareas.filter(tarea => tarea.status === 'Completada').slice(0, 8);
-    const pendientes = tareas.filter(tarea => tarea.status === 'Pendiente').slice(0, 8);
-    const aplazadas = tareas.filter(tarea => tarea.status === 'Aplazado').slice(0, 8);
+        // Verificar que los contenedores existan
+        if (!completedTasks || !pendingTasks || !postponedTasks) {
+            console.error('Uno o más contenedores de estado no se encontraron en el DOM.');
+            return;
+        }
 
-    completadas.forEach(tarea => {
-        const tareaElemento = crearElementoTarea(tarea);
-        completedTasks.appendChild(tareaElemento);
-    });
+        // Limpiar los contenedores
+        completedTasks.innerHTML = '';
+        pendingTasks.innerHTML = '';
+        postponedTasks.innerHTML = '';
 
-    pendientes.forEach(tarea => {
-        const tareaElemento = crearElementoTarea(tarea);
-        pendingTasks.appendChild(tareaElemento);
-    });
+        // Filtrar y mostrar tareas según el estado
+        const completadas = tareas.filter(tarea => tarea.status === 'Completada').slice(0, 8);
+        const pendientes = tareas.filter(tarea => tarea.status === 'Pendiente').slice(0, 8);
+        const aplazadas = tareas.filter(tarea => tarea.status === 'Aplazado').slice(0, 8);
 
-    aplazadas.forEach(tarea => {
-        const tareaElemento = crearElementoTarea(tarea);
-        postponedTasks.appendChild(tareaElemento);
-    });
+        completadas.forEach(tarea => {
+            const tareaElemento = crearElementoTarea(tarea);
+            completedTasks.appendChild(tareaElemento);
+        });
+
+        pendientes.forEach(tarea => {
+            const tareaElemento = crearElementoTarea(tarea);
+            pendingTasks.appendChild(tareaElemento);
+        });
+
+        aplazadas.forEach(tarea => {
+            const tareaElemento = crearElementoTarea(tarea);
+            postponedTasks.appendChild(tareaElemento);
+        });
+    } catch (error) {
+        console.error('Error al mostrar tareas por estado:', error);
+    }
 }
 
 function crearElementoTarea(tarea) {
@@ -82,9 +92,15 @@ function hideTaskDetails() {
 }
 
 // Función para obtener las tareas desde localStorage
-function getTasks() {
-    const tasks = localStorage.getItem('tasks');
-    return tasks ? JSON.parse(tasks) : [];
+async function getTasks() {
+    try {
+        const response = await fetch('/api/tasks');
+        if (!response.ok) throw new Error('Error al obtener las tareas');
+        return await response.json();
+    } catch (error) {
+        console.error('Error al obtener las tareas:', error);
+        return [];
+    }
 }
 
 

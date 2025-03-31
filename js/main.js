@@ -54,18 +54,18 @@ function mostrarTareas(maxRows = 3) {
         mostrarTareas(maxRows); // Volver a cargar tareas con el nuevo límite
     };
 }
-function aplazarTarea(dias, taskId) {
-    const tasks = getTasks();
-    const task = tasks.find(t => t.id === taskId);
-
-    if (task) {
-        const dueDate = new Date(task.dueDate);
-        dueDate.setDate(dueDate.getDate() + dias);
-        task.dueDate = dueDate.toISOString().split('T')[0]; // Formato YYYY-MM-DD
-        task.status = 'Aplazado'; // Cambiar el estado a "Aplazado"
-        saveTasks(tasks);
+async function aplazarTarea(dias, taskId) {
+    try {
+        const response = await fetch(`/api/tasks/${taskId}/aplazar`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ dias })
+        });
+        if (!response.ok) throw new Error('Error al aplazar la tarea');
         alert(`La tarea ha sido aplazada ${dias} días.`);
-        mostrarTareas();
+        mostrarTareas(); // Refrescar la vista de tareas
+    } catch (error) {
+        console.error('Error al aplazar la tarea:', error);
     }
 }
 
@@ -75,32 +75,61 @@ function toggleMenu() {
 }
 
 // Función para obtener las tareas desde localStorage
-function getTasks() {
-    return JSON.parse(localStorage.getItem('tasks')) || [];
+async function getTasks() {
+    try {
+        const response = await fetch('/api/tasks');
+        if (!response.ok) throw new Error('Error al obtener las tareas');
+        return await response.json();
+    } catch (error) {
+        console.error('Error al obtener las tareas:', error);
+        return [];
+    }
 }
 
 // Función para agregar una tarea
-function addTask(task) {
-    const tasks = getTasks();
-    tasks.push(task);
-    saveTasks(tasks);
+async function addTask(task) {
+    try {
+        const response = await fetch('/api/tasks', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(task)
+        });
+        if (!response.ok) throw new Error('Error al agregar la tarea');
+        mostrarTareas(); // Refrescar la vista de tareas
+    } catch (error) {
+        console.error('Error al agregar la tarea:', error);
+    }
 }
 
 // Función para guardar tareas en LocalStorage
-function saveTasks(tasks) {
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-}
-
-function deleteTask(taskId) {
-    const tasks = getTasks();
-    const task = tasks.find(t => t.id === taskId); // Encuentra la tarea a eliminar
-    const updatedTasks = tasks.filter(t => t.id !== taskId); // Filtra la tarea a eliminar
-    if (confirm(`¿Estás seguro de que deseas eliminar la tarea "${task.title}"?`)) {
-        saveTasks(updatedTasks); // Guarda las tareas actualizadas
-        alert('Tarea eliminada con éxito!');
-        mostrarTareas(); // Actualiza la vista
+async function saveTasks(tasks) {
+    try {
+        const response = await fetch('/api/tasks', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(tasks)
+        });
+        if (!response.ok) throw new Error('Error al guardar las tareas');
+        return await response.json();
+    } catch (error) {
+        console.error('Error al guardar las tareas:', error);
+        alert('No se pudieron guardar las tareas. Por favor, inténtalo de nuevo.');
     }
 }
+
+async function deleteTask(taskId) {
+    try {
+        const response = await fetch(`/api/tasks/${taskId}`, {
+            method: 'DELETE'
+        });
+        if (!response.ok) throw new Error('Error al eliminar la tarea');
+        alert('Tarea eliminada con éxito!');
+        mostrarTareas(); // Refrescar la vista de tareas
+    } catch (error) {
+        console.error('Error al eliminar la tarea:', error);
+    }
+}
+
 function editTask(taskId) {
     const tasks = getTasks();
     const task = tasks.find(t => t.id === taskId); // Encuentra la tarea a editar
@@ -126,57 +155,66 @@ function editTask(taskId) {
         </div>
     `;
 }
-function saveTaskEdit(taskId) {
-    const tasks = getTasks();
-    const taskIndex = tasks.findIndex(t => t.id === taskId); // Encuentra el índice de la tarea
+async function saveTaskEdit(taskId) {
+    const updatedTask = {
+        title: document.getElementById('edit-title').value,
+        description: document.getElementById('edit-description').value,
+        dueDate: document.getElementById('edit-dueDate').value
+    };
 
-    if (taskIndex === -1) return; // Si la tarea no existe, salir de la función
-
-    // Actualizar los detalles de la tarea
-    tasks[taskIndex].title = document.getElementById('edit-title').value;
-    tasks[taskIndex].description = document.getElementById('edit-description').value;
-    tasks[taskIndex].dueDate = document.getElementById('edit-dueDate').value;
-     
-    // Obtener la fecha actual en formato YYYY-MM-DD
-    const today = new Date();
-    const currentDate = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
-
-    // Validación de la fecha de vencimiento
-    if (tasks[taskIndex].dueDate < currentDate) {
-        alert('La fecha de vencimiento no puede ser anterior a la fecha actual.');
-        return;
-    }
-
-    saveTasks(tasks); // Guarda las tareas actualizadas en LocalStorage
-    alert('Tarea actualizada con éxito!');
-    showNotification(`La tarea ha sido marcada como ${tasks[taskIndex].status}!`); // Muestra la notificación
-    mostrarTareas(); // Refresca la vista de tareas
-}
-function toggleTaskStatus(taskId) {
-    const tasks = getTasks();
-    const task = tasks.find(t => t.id === taskId);
-
-    if (task) {
-        task.status = task.status === 'Pendiente' ? 'Completada' : 'Pendiente';
-        saveTasks(tasks);
-        showNotification(`La tarea ha sido marcada como ${task.status}!`); // Muestra la notificación
-        mostrarTareas();
+    try {
+        const response = await fetch(`/api/tasks/${taskId}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(updatedTask)
+        });
+        if (!response.ok) throw new Error('Error al actualizar la tarea');
+        alert('Tarea actualizada con éxito!');
+        mostrarTareas(); // Refrescar la vista de tareas
+    } catch (error) {
+        console.error('Error al actualizar la tarea:', error);
     }
 }
 
+async function toggleTaskStatus(taskId) {
+    try {
+        const response = await fetch(`/api/tasks/${taskId}/status`, {
+            method: 'PUT'
+        });
+        if (!response.ok) throw new Error('Error al cambiar el estado de la tarea');
+        mostrarTareas(); // Refrescar la vista de tareas
+    } catch (error) {
+        console.error('Error al cambiar el estado de la tarea:', error);
+    }
+}
 // Funciones de Categorías
 // =======================
 
 // Función para obtener categorías desde LocalStorage
-function getCategories() {
-    return JSON.parse(localStorage.getItem('categories')) || [];
+async function getCategories() {
+    try {
+        const response = await fetch('/api/categories');
+        if (!response.ok) throw new Error('Error al obtener las categorías');
+        return await response.json();
+    } catch (error) {
+        console.error('Error al obtener las categorías:', error);
+        return [];
+    }
 }
 
 // Función para guardar categorías en LocalStorage
-function saveCategory(category) {
-    const categories = getCategories();
-    categories.push(category);
-    localStorage.setItem('categories', JSON.stringify(categories));
+async function saveCategory(category) {
+    try {
+        const response = await fetch('/api/categories', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(category)
+        });
+        if (!response.ok) throw new Error('Error al guardar la categoría');
+        return await response.json();
+    } catch (error) {
+        console.error('Error al guardar la categoría:', error);
+    }
 }
 
 // Funciones de Formularios
@@ -198,23 +236,36 @@ function openTaskForm() {
 
 
 // Función para llenar el select de categorías en el formulario de tareas
-function populateCategories() {
-    const categories = getCategories();
-    const categorySelect = document.getElementById('category');
-    categorySelect.innerHTML = '<option value="">Seleccione una categoría</option>';
-    categories.forEach(category => {
-        const option = document.createElement('option');
-        option.value = category.name;
-        option.textContent = category.name;
-        categorySelect.appendChild(option);
-    });
+async function populateCategories() {
+    try {
+        const response = await fetch('/api/categories');
+        if (!response.ok) throw new Error('Error al obtener las categorías');
+        const categories = await response.json();
+
+        const categorySelect = document.getElementById('category');
+        if (!categorySelect) return; // Asegurarse de que el elemento exista
+
+        // Limpiar y agregar la opción predeterminada
+        categorySelect.innerHTML = '<option value="">Seleccione una categoría</option>';
+
+        // Agregar opciones para cada categoría
+        categories.forEach(category => {
+            const option = document.createElement('option');
+            option.value = category.name;
+            option.textContent = category.name;
+            categorySelect.appendChild(option);
+        });
+    } catch (error) {
+        console.error('Error al cargar las categorías:', error);
+        alert('No se pudieron cargar las categorías. Por favor, inténtalo de nuevo.');
+    }
 }
 
 // Función para agregar la lógica del formulario de tareas
 function addFormListener() {
     const taskForm = document.getElementById('task-form');
     if (taskForm) {
-        taskForm.addEventListener('submit', (event) => {
+        taskForm.addEventListener('submit', async (event) => {
             event.preventDefault();
             const title = document.getElementById('task-title').value;
             const dueDate = document.getElementById('due-date').value;
@@ -226,22 +277,23 @@ function addFormListener() {
                 return;
             }
 
-            // Obtener la fecha actual en formato YYYY-MM-DD
+            // Validación de la fecha de vencimiento
             const today = new Date();
             const currentDate = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
-
-            // Validación de la fecha de vencimiento
             if (dueDate < currentDate) {
                 alert('La fecha de vencimiento no puede ser anterior a la fecha actual.');
                 return;
             }
 
-            const categories = getCategories();
-            const category = categories.find(cat => cat.name === categoryName);
-            const taskId = `${category?.id || 'default'}${generateRandomId()}`;
+            // Crear una nueva categoría si no existe
+            const categories = await getCategories();
+            const categoryExists = categories.some(cat => cat.name === categoryName);
+            if (!categoryExists) {
+                await saveCategory(categoryName); // Guardar la categoría en el backend
+            }
 
+            // Crear la tarea
             const task = {
-                id: taskId,
                 title,
                 description: document.getElementById('task-description').value || 'Sin descripción',
                 dueDate,
@@ -250,11 +302,8 @@ function addFormListener() {
                 startDate: currentDate,
                 status: 'Pendiente'
             };
+            await addTask(task);
 
-            addTask(task);
-            if (!category) {
-                category(categoryName);
-            }
             taskForm.reset();
             alert('Tarea guardada con éxito!');
             mostrarTareas();
@@ -266,12 +315,6 @@ function addFormListener() {
 
 // Funciones Utilitarias
 // =====================
-const MAX_CATEGORIES = 10;
-// Generar un ID alfanumérico aleatorio
-function generateRandomId(length = 4) {
-    const characters = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789';
-    return Array.from({ length }, () => characters.charAt(Math.floor(Math.random() * characters.length))).join('');
-}
 
 // Cargar la barra de navegación desde navbar.html y añadir eventos de redirección
 fetch('/Proyecto_To_Do_list_TMS-2024-2/public/Navbar/navbar.html')

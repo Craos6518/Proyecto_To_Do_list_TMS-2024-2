@@ -1,110 +1,128 @@
 // Función para mostrar las categorías
-function mostrarCategorias(maxRows = 3) {
-    const tareas = getTasks();
-    const categorias = getCategories();
-    const contenedorCategorias = document.getElementById('tareas-container');
-    const loadMoreButton = document.getElementById('load-more-button');
-    contenedorCategorias.innerHTML = ''; // Limpiar el contenedor
+async function mostrarCategorias(maxRows = 3) {
+    try {
+        const tareas = await getTasks(); // Obtener tareas del backend
+        const categorias = await getCategories(); // Obtener categorías del backend
+        const contenedorCategorias = document.getElementById('tareas-container');
+        const loadMoreButton = document.getElementById('load-more-button');
+        contenedorCategorias.innerHTML = ''; // Limpiar el contenedor
 
-    // Verifica si hay categorías para mostrar
-    if (categorias.length === 0) {
-        contenedorCategorias.innerHTML = '<p>No hay categorías disponibles.</p>';
-        loadMoreButton.style.display = 'none';
-        return;
-    }
-
-    //const tasksPerRow = 2; // Número de tareas por fila
-    let categoriasAMostrar = maxRows; // Cantidad de categorías a mostrar inicialmente
-    categoriasAMostrar = Math.min(categoriasAMostrar, categorias.length); // Limitar la cantidad si hay menos categorías
-
-    for (let i = 0; i < categoriasAMostrar; i++) {
-        const categoria = categorias[i];
-        const categoriaElemento = document.createElement('div');
-        categoriaElemento.classList.add('categoria');
-        
-        // Usar la propiedad correcta para el nombre de la categoría
-        if (categoria && categoria.name) {
-            categoriaElemento.innerHTML = `<h2>${categoria.name}</h2>`;
-        } else {
-            console.error('Categoría no válida:', categoria);
-            continue; // Salir de la iteración si la categoría es inválida
+        // Verifica si hay categorías para mostrar
+        if (categorias.length === 0) {
+            contenedorCategorias.innerHTML = '<p>No hay categorías disponibles.</p>';
+            loadMoreButton.style.display = 'none';
+            return;
         }
 
-        // Botón para eliminar la categoría
-        const deleteButton = document.createElement('button');
-        deleteButton.textContent = 'Eliminar Categoría';
-        deleteButton.classList.add('delete-button'); // Puedes añadir clases para estilizar el botón
-        deleteButton.onclick = () => eliminarCategoria(categoria.name);
-        categoriaElemento.appendChild(deleteButton);
+        let categoriasAMostrar = maxRows; // Cantidad de categorías a mostrar inicialmente
+        categoriasAMostrar = Math.min(categoriasAMostrar, categorias.length); // Limitar la cantidad si hay menos categorías
 
-        // Filtrar las tareas por esta categoría
-        const tareasFiltradas = tareas.filter(tarea => tarea.category === categoria.name);
-        
-        // Mostrar solo las primeras 10 tareas
-        const tareasAMostrar = tareasFiltradas.slice(0, 10);
-        
-        tareasAMostrar.forEach(tarea => {
-            const tareaElemento = document.createElement('div');
-            tareaElemento.classList.add('tarea');
+        for (let i = 0; i < categoriasAMostrar; i++) {
+            const categoria = categorias[i];
+            const categoriaElemento = document.createElement('div');
+            categoriaElemento.classList.add('categoria');
 
-            // Definir el HTML de cada tarea
-            tareaElemento.innerHTML = `
-                <h3>${tarea.title}</h3>
-                <p><strong>Descripción:</strong> ${tarea.description}</p>
-                <p><strong>Fecha de vencimiento:</strong> ${tarea.dueDate}</p>
-            `;
+            // Usar la propiedad correcta para el nombre de la categoría
+            if (categoria && categoria.name) {
+                categoriaElemento.innerHTML = `<h2>${categoria.name}</h2>`;
+            } else {
+                console.error('Categoría no válida:', categoria);
+                continue; // Salir de la iteración si la categoría es inválida
+            }
 
-            categoriaElemento.appendChild(tareaElemento);
-        });
+            // Botón para eliminar la categoría
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Eliminar Categoría';
+            deleteButton.classList.add('delete-button');
+            deleteButton.onclick = () => eliminarCategoria(categoria.name);
+            categoriaElemento.appendChild(deleteButton);
 
-        contenedorCategorias.appendChild(categoriaElemento);
+            // Filtrar las tareas por esta categoría
+            const tareasFiltradas = tareas.filter(tarea => tarea.category === categoria.name);
+
+            // Mostrar solo las primeras 10 tareas
+            const tareasAMostrar = tareasFiltradas.slice(0, 10);
+
+            tareasAMostrar.forEach(tarea => {
+                const tareaElemento = document.createElement('div');
+                tareaElemento.classList.add('tarea');
+
+                tareaElemento.innerHTML = `
+                    <h3>${tarea.title}</h3>
+                    <p><strong>Descripción:</strong> ${tarea.description}</p>
+                    <p><strong>Fecha de vencimiento:</strong> ${tarea.dueDate}</p>
+                `;
+
+                categoriaElemento.appendChild(tareaElemento);
+            });
+
+            contenedorCategorias.appendChild(categoriaElemento);
+        }
+
+        // Mostrar el botón "Cargar más" si hay categorías adicionales
+        loadMoreButton.style.display = categorias.length > categoriasAMostrar ? 'block' : 'none';
+
+        // Manejo del evento para cargar más categorías sin redirigir
+        loadMoreButton.onclick = () => {
+            maxRows += 1; // Incrementa las categorías mostradas
+            mostrarCategorias(maxRows); // Volver a cargar categorías con el nuevo límite
+        };
+    } catch (error) {
+        console.error('Error al mostrar las categorías:', error);
     }
-
-    // Mostrar el botón "Cargar más" si hay categorías adicionales
-    loadMoreButton.style.display = categorias.length > categoriasAMostrar ? 'block' : 'none';
-
-    // Manejo del evento para cargar más categorías sin redirigir
-    loadMoreButton.onclick = () => {
-        maxRows += 1; // Incrementa las categorías mostradas
-        mostrarCategorias(maxRows); // Volver a cargar categorías con el nuevo límite
-    };
 }
 
 // Función para eliminar una categoría
-function eliminarCategoria(nombreCategoria) {
-    const tareas = getTasks();
-    const tareasEnCategoria = tareas.filter(tarea => tarea.category === nombreCategoria);
-
-    if (tareasEnCategoria.length > 0) {
-        alert('No se puede eliminar la categoría porque tiene tareas asignadas.');
-        return;
-    }
-
-    if (confirm(`¿Estás seguro de que deseas eliminar la categoría "${nombreCategoria}"?`)) {
-        let categorias = getCategories();
-        categorias = categorias.filter(categoria => categoria.name !== nombreCategoria);
-        localStorage.setItem('categories', JSON.stringify(categorias));
+async function eliminarCategoria(nombreCategoria) {
+    try {
+        const response = await fetch(`/api/categories/${nombreCategoria}`, {
+            method: 'DELETE'
+        });
+        if (!response.ok) throw new Error('Error al eliminar la categoría');
+        alert(`Categoría "${nombreCategoria}" eliminada con éxito.`);
         mostrarCategorias(); // Actualizar la visualización de categorías
+    } catch (error) {
+        console.error('Error al eliminar la categoría:', error);
     }
 }
 
 // Función para obtener las tareas desde localStorage
-function getTasks() {
-    const tasks = localStorage.getItem('tasks');
-    return tasks ? JSON.parse(tasks) : [];
+async function getTasks() {
+    try {
+        const response = await fetch('/api/tasks');
+        if (!response.ok) throw new Error('Error al obtener las tareas');
+        return await response.json();
+    } catch (error) {
+        console.error('Error al obtener las tareas:', error);
+        return [];
+    }
 }
 
 // Función para obtener las categorías desde localStorage
-function getCategories() {
-    const categories = localStorage.getItem('categories');
-    return categories ? JSON.parse(categories) : [];
+async function getCategories() {
+    try {
+        const response = await fetch('/api/categories');
+        if (!response.ok) throw new Error('Error al obtener las categorías');
+        return await response.json();
+    } catch (error) {
+        console.error('Error al obtener las categorías:', error);
+        return [];
+    }
 }
 
 // Función para guardar una nueva categoría en localStorage
-function saveCategory(category) {
-    const categories = getCategories();
-    categories.push(category);
-    localStorage.setItem('categories', JSON.stringify(categories));
+async function saveCategory(category) {
+    try {
+        const response = await fetch('/api/categories', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(category)
+        });
+        if (!response.ok) throw new Error('Error al guardar la categoría');
+        return await response.json();
+    } catch (error) {
+        console.error('Error al guardar la categoría:', error);
+    }
 }
 
 // Mostrar categorías al cargar la página
@@ -114,11 +132,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const MAX_CATEGORIES = 10;
 
-// Generar un ID alfanumérico aleatorio
-function generateRandomId(length = 4) {
-    const characters = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789';
-    return Array.from({ length }, () => characters.charAt(Math.floor(Math.random() * characters.length))).join('');
-}
 
 // Función para abrir el formulario de categorías
 function openCategory(){
@@ -136,12 +149,12 @@ function openCategory(){
 // Función para agregar lógica del formulario de categorías
 function addCategoryListener() {
     const categoryForm = document.getElementById('category-form');
-    categoryForm.addEventListener('submit', (event) => {
+    categoryForm.addEventListener('submit', async (event) => {
         event.preventDefault();
 
         const categoryName = document.getElementById('category-name').value.trim();
-        let categories = getCategories();
-        
+        const categories = await getCategories();
+
         if (categories.length >= MAX_CATEGORIES) {
             alert('No puedes agregar más de 10 categorías.');
             return;
@@ -152,8 +165,8 @@ function addCategoryListener() {
             return;
         }
 
-        const newCategory = { id: generateRandomId(), name: categoryName };
-        saveCategory(newCategory);
+        const newCategory = { name: categoryName }; // El backend generará el ID
+        await saveCategory(newCategory);
         alert(`Categoría "${categoryName}" creada con éxito.`);
         categoryForm.reset();
         mostrarCategorias(); // Volver a cargar categorías con el nuevo límite
